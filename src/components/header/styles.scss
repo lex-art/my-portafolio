@@ -1,0 +1,21 @@
+@import '../../styles/theme-variables.scss';
+
+.container-header {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+
+    ul {
+        display: flex;
+        list-style: none;
+        a {
+            @include themify($themes) {
+                color: themed('colorText');
+            }
+            text-decoration: none;
+            padding: 0 .5rem 0 .5rem;
+        }
+    }
+}

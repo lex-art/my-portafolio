@@ -1,0 +1,15 @@
+import React from 'react'
+import { Header } from '../header/Header'
+
+export const Home = () => {
+  return (
+    <>
+        <Header/>
+        <section>
+            <div>Hola</div>
+            <div>IMG</div>
+        </section>
+    </>
+    
+  )
+}

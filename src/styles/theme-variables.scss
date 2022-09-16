@@ -1,0 +1,45 @@
+$themes: (
+  light: (
+    backGroundColorPrimary:  #FFFFFF,
+    backGroundColorSecondary: #E8E9D0,
+    colorText: #07212c,
+    colorIcon: #E8E9D0,
+
+    colorHeaderFooter: #fff,
+    
+    colorBackground: #f8f8fa,
+  ),
+  dark: (
+    backGroundColorPrimary:  #184F67,
+    backGroundColorSecondary: #030D12,
+    colorText: #ffffff,
+    colorIcon: #030D12,
+
+    colorHeaderFooter: #36394c,
+    
+    colorBackground: #222736,
+  ),
+);
+
+@mixin themify($themes) {
+  @each $theme, $map in $themes {
+    .theme-#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), '#{$key}');
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $key: $value,
+          )
+        ) !global;
+      }
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}

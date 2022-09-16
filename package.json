@@ -12,17 +12,24 @@
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "eslint": "eslint . --ext .js"
   },
   "dependencies": {
     "gatsby": "^4.23.0",
     "gatsby-plugin-image": "^2.23.0",
+    "gatsby-plugin-react-i18next": "^2.0.4",
     "gatsby-plugin-sass": "^5.23.0",
     "gatsby-plugin-sharp": "^4.23.0",
     "gatsby-source-filesystem": "^4.23.0",
     "gatsby-transformer-sharp": "^4.23.0",
+    "i18next": "^21.9.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-i18next": "^11.18.6",
     "sass": "^1.54.9"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0"
   }
 }

@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'Poppins-Medium';
+    src: url('../../public/static/fonts/Poppins-Medium.ttf');
+}
+
+body {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins-Medium', 'Courier New', Courier, monospace;
+    height: 100vh;
+    width: 100vw;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    vertical-align: baseline;
+    overflow-x: hidden;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+    }
+}
+  
