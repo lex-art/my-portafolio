@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTranslation } from "gatsby-plugin-react-i18next"
 import { Header } from '../../components/Header/Header'
-import myToy from "../../../public/static/img/toy.svg"
+import myToy from "../../assets/img/toy.svg"
 import './style.scss'
 
 export const Home = () => {
