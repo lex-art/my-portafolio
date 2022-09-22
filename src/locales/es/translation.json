@@ -1,5 +1,9 @@
 {
     "home":"Inicio",
     "portafolio": "Portafolio",
-    "contact": "Contacto"
+    "about": "Sobre mí",
+    "contact": "Contacto",
+    "greeting": "¡Hola!, Soy Alexander",
+    "myProfession": "Desarrollador Full-Stack & Diseñador UI"
+
 }

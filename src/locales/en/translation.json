@@ -1,5 +1,8 @@
 {
     "home":"Home",
     "portafolio": "Portafolio",
-    "contact": "Contact"
+    "about": "About",
+    "contact": "Contact",
+    "greeting": "Hello!, I'am Alexander",
+    "myProfession": "Full-Stack Developer & UI Designer"
 }

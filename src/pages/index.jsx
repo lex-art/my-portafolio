@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react"
 import { ThemeContext } from "../context/theme-context"
 import '../styles/index.scss';
-import './index.scss'
 import { graphql } from "gatsby"
-import { useTranslation } from "gatsby-plugin-react-i18next"
 import { getDefaultTheme } from '../helpers/get-theme'
-import { Aside } from "../components/aside/Aside" 
-import { Home } from "../components/Home/home"
+import { Aside } from "../components/Aside/Aside" 
+import { Home } from '../views/Home/home'
+import { Portafolio } from "../views/Portafolio/Portafolio";
+import { About } from '../views/About/About'
 
 
 const IndexPage = () => {
-  const { t } = useTranslation();
   const [theme, setTheme] = useState(getDefaultTheme());
 
   useEffect(() => {
@@ -21,9 +20,10 @@ const IndexPage = () => {
     <React.StrictMode>
       <ThemeContext.Provider value={{ theme, setTheme }}>
       <Aside/>
-        <main className="container-background">
-        
+        <main>
           <Home/>
+          <Portafolio/>
+          <About/>
         </main>
       </ThemeContext.Provider>
     </React.StrictMode>

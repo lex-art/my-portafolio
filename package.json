@@ -13,7 +13,7 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "eslint": "eslint . --ext .js"
+    "eslint": "eslint . --ext .jsx"
   },
   "dependencies": {
     "gatsby": "^4.23.0",
