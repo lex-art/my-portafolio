@@ -3,8 +3,8 @@ import { ThemeContext } from '../../context/theme-context'
 import { Link, useI18next } from 'gatsby-plugin-react-i18next'
 import constants from '../../constants'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
-import logo from '../../assets/img/logo.svg'
-import logoLight from '../../assets/img/logo_light.svg'
+import logo from '../../assets/img/logo.png'
+import logoLight from '../../assets/img/logo_light.png'
 import './styles.scss';
 import { Switch } from '../Swicth/Switch'
 
