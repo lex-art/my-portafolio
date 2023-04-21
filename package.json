@@ -13,7 +13,7 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "eslint": "eslint . --ext .jsx"
+    "eslint": "eslint . --ext .jsx  --fix"
   },
   "dependencies": {
     "gatsby": "^4.23.0",
@@ -32,6 +32,10 @@
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
-    "eslint": "^7.32.0"
-  }
+    "eslint": "^7.32.0",
+    "standard": "^17.0.0"
+  },
+  "extends": [
+    "./node_modules/standard/eslintrc.json"
+  ]
 }
