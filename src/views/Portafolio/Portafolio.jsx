@@ -9,6 +9,8 @@ import './style.scss'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
+const isBrowser = typeof window !== "undefined"
+
 const dataPorfaolio = [
   {
     title: 'programmingLanguages',
@@ -38,18 +40,26 @@ const dataPorfaolio = [
 export const Portafolio = () => {
 
   const [windowSize, setWindowSize] = useState({
-    width: window.innerWidth
+    width: (isBrowser &&  window.innerWidth) ?? 0
   })
 
   useEffect(() => {
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
+    if(isBrowser){
+      window.addEventListener('resize', handleResize)
+    }
+    return () => {
+      if(isBrowser){
+        window.removeEventListener('resize', handleResize)
+      }
+    }
   }, [])
 
   const handleResize = () => {
-    setWindowSize({
-      width: window.innerWidth
-    })
+    if(isBrowser){
+      setWindowSize({
+        width: window.innerWidth
+      })
+    }
   }
 
   const settingsSlider = {

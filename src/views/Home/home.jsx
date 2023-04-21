@@ -8,31 +8,15 @@ import './style.scss'
 
 export const Home = () => {
   const { t } = useTranslation()
-  const theme = useContext(ThemeContext)
   const { language } = useI18next()
   const isEs = language === constants.themes.ES
-
-  const [windowSize, setWindowSize] = useState({
-    width: window.innerWidth
-  })
-
-  useEffect(() => {
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
-
-  const handleResize = () => {
-    setWindowSize({
-      width: window.innerWidth
-    })
-  }
 
   return (
     <section id='home' className="container-background">    
         <Header /> 
         <div className='container-info'>
           <div className='container-home'>
-          <div class="left">
+          <div className="left">
             <div className='wrapper-text'>
             <h1 className="title-text">{t('greeting')}</h1>
               <h3 
@@ -42,7 +26,7 @@ export const Home = () => {
             </div>
           
           </div>
-          <div class="right">
+          <div className="right">
             <img src={myToy} alt="me" />
           </div>
         </div>

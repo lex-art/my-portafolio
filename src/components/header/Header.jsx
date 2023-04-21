@@ -7,6 +7,8 @@ import logoLight from '../../assets/img/logo_light.png'
 import './styles.scss';
 import { Switch } from '../Swicth/Switch'
 
+const isBrowser = typeof window !== "undefined"
+
 export const Header = () => {
     //const [isDark, setIsDark] = useState(false)
     const { theme, setTheme } = useContext(ThemeContext)
@@ -20,7 +22,9 @@ export const Header = () => {
     const handleThemeChange = () => {
         const selectedTheme = isCurrentDark ? constants.themes.LIGHT : constants.themes.DARK
         setTheme(selectedTheme)
-        window.localStorage.setItem(constants.themes.DEFAULT_THEME, selectedTheme)
+        if (isBrowser) {
+            window.localStorage.setItem(constants.themes.DEFAULT_THEME, selectedTheme)
+        }
     }
 
     return (

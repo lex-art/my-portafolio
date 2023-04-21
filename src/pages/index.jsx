@@ -8,12 +8,15 @@ import { Home } from '../views/Home/home'
 import { Portafolio } from "../views/Portafolio/Portafolio";
 import { About } from '../views/About/About'
 
+const isBrowser = typeof window !== "undefined"
 
 const IndexPage = () => {
   const [theme, setTheme] = useState(getDefaultTheme());
 
   useEffect(() => {
-    window.document.body.className = `theme-${theme}`;
+    if(isBrowser){
+      window.document.body.className = `theme-${theme}`;
+    }
   }, [theme]);
 
   return (
