@@ -1,6 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `My portafolio`,
+    title: `Alexander`,
+    author: `@lexart`,
+    icon: `src/assets/img/isologo.svg`,
     siteUrl: `https://www.yourdomain.tld`
   },
   plugins: ["gatsby-plugin-sass", "gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp", {

@@ -32,7 +32,12 @@ const IndexPage = () => {
 
 export default IndexPage
 
-export const Head = () => <title>Home Page</title>
+export const Head = () =>(
+  <>
+   <title>Alexander</title>
+   <link rel="shortcut icon" type="image/svg" href="/isologo.svg" />
+  </>
+)
 
 export const query = graphql`
   query ($language: String!) {

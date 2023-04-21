@@ -1,8 +1,7 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { ThemeContext } from '../../context/theme-context'
-import { Link, useI18next } from 'gatsby-plugin-react-i18next'
+import { Link, useI18next, useTranslation } from 'gatsby-plugin-react-i18next'
 import constants from '../../constants'
-import { useTranslation } from 'gatsby-plugin-react-i18next'
 import logo from '../../assets/img/logo.png'
 import logoLight from '../../assets/img/logo_light.png'
 import './styles.scss';

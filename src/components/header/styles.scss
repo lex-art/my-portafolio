@@ -5,8 +5,8 @@
     flex-flow: row wrap;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem;
-    margin-right: 1rem;
+    padding: 2rem 4rem;
+
     position: relative;
     z-index: 2;
 }
@@ -15,7 +15,7 @@
         color: themed('colorText');
     }
     position: relative;
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     text-decoration: none;
     margin: 0 .2rem 0 .2rem;
     padding: 0 .3rem 0 .3rem;
