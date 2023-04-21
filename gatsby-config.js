@@ -1,4 +1,8 @@
 module.exports = {
+  flags: {
+    DEV_SSR: true
+  },
+  pathPrefix:"/my-portafolio",
   siteMetadata: {
     title: `Alexander`,
     author: `@lexart`,
