@@ -38,7 +38,7 @@ export default IndexPage
 export const Head = () =>(
   <>
    <title>Alexander</title>
-   <link rel="shortcut icon" type="image/svg" href="/isologo.svg" />
+   <link rel="shortcut icon" type="image/svg" href="assets/img/isologo.svg" />
   </>
 )
 
