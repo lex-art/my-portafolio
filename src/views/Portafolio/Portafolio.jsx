@@ -40,11 +40,15 @@ const dataPorfaolio = [
 export const Portafolio = () => {
 
   const [windowSize, setWindowSize] = useState({
-    width: (isBrowser &&  window.innerWidth) ?? 0
+    width: 2000
   })
+
 
   useEffect(() => {
     if(isBrowser){
+      setWindowSize({
+        width: window.innerWidth
+      })
       window.addEventListener('resize', handleResize)
     }
     return () => {
@@ -52,7 +56,7 @@ export const Portafolio = () => {
         window.removeEventListener('resize', handleResize)
       }
     }
-  }, [])
+  }, [isBrowser])
 
   const handleResize = () => {
     if(isBrowser){
@@ -77,6 +81,15 @@ export const Portafolio = () => {
     pauseOnHover: true,
     arrows: true,
     responsive: [
+      {
+        breakpoint: 1300,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
+      },
       {
         breakpoint: 768,
         settings: {
@@ -105,7 +118,7 @@ export const Portafolio = () => {
           <div 
           className='container-slide'  
           style={{
-              width: windowSize.width / 1.2
+              width:(windowSize.width / 1.2)
             }}>
               
             <Slider {...settingsSlider}>
