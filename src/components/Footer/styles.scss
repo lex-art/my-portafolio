@@ -1,0 +1,43 @@
+@import '../../styles/theme-variables.scss';
+
+/* .footer-contain {
+    display: none;
+    visibility: hidden;
+}
+  */
+
+@media screen and (max-width: 768px) {
+    .footer-contain {
+        @include themify($themes) {
+            color: themed('colorIcon');
+        }
+        position: fixed;
+        height: 4.5rem;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        z-index: 999;
+        bottom: 0;
+
+    }
+
+    .wraper-icon-footer {
+        @include themify($themes) {
+            background-color: rgba($color: themed('colorText'), $alpha: .8);
+        }
+        height: 4.5rem ;
+        width: 30rem;
+        border-radius: .9rem  .9rem 0 0;
+    }
+    
+
+    .container-icon-footer {
+        height: 100%;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+        align-items: center;
+        padding-top: .4rem;
+        
+    }
+}

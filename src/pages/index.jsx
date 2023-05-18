@@ -7,6 +7,7 @@ import { Aside } from "../components/Aside/Aside"
 import { Home } from '../views/Home/home'
 import { Portafolio } from "../views/Portafolio/Portafolio";
 import { About } from '../views/About/About'
+import { Footer } from '../components/Footer/Footer'
 
 const isBrowser = typeof window !== "undefined"
 
@@ -28,6 +29,7 @@ const IndexPage = () => {
           <Portafolio/>
           <About/>
         </main>
+        <Footer />
       </ThemeContext.Provider>
     </React.StrictMode>
   )
@@ -38,6 +40,8 @@ export default IndexPage
 export const Head = () =>(
   <>
    <title>Alexander</title>
+   <meta charSet="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
    <link rel="shortcut icon" type="image/svg" href="assets/img/isologo.svg" />
   </>
 )

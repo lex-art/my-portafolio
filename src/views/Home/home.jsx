@@ -2,7 +2,6 @@ import React, {useContext, useState, useEffect} from 'react'
 import { useTranslation, useI18next } from "gatsby-plugin-react-i18next"
 import { Header } from '../../components/Header/Header'
 import myToy from "../../assets/img/toy.svg"
-import { ThemeContext } from "../../context/theme-context"
 import constants from '../../constants'
 import './style.scss'
 

@@ -111,6 +111,7 @@ export const Portafolio = () => {
       
     ]
   }
+
   return (
     <section id='portafolio' className='container-portafolio'>
         <div className="slides">
@@ -118,14 +119,14 @@ export const Portafolio = () => {
           <div 
           className='container-slide'  
           style={{
-              width:(windowSize.width / 1.2)
+              width:(windowSize.width / 1.2).toFixed(2) + 'px'
             }}>
               
             <Slider {...settingsSlider}>
           
-             { dataPorfaolio.map((item, index) => (
+             { dataPorfaolio.map((item) => (
                 <CardPortafolio
-                  key={index}
+                  key={item.title}
                   title={item.title}
                   description={item.description}
                   image={item.image}
