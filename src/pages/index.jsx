@@ -29,7 +29,6 @@ const IndexPage = () => {
           <Portafolio/>
           <About/>
         </main>
-        <Footer />
       </ThemeContext.Provider>
     </React.StrictMode>
   )
