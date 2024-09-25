@@ -7,7 +7,6 @@ import { Aside } from "../components/Aside/Aside"
 import { Home } from '../views/Home/home'
 import { Portafolio } from "../views/Portafolio/Portafolio";
 import { About } from '../views/About/About'
-import { Footer } from '../components/Footer/Footer'
 
 const isBrowser = typeof window !== "undefined"
 
