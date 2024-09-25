@@ -2,7 +2,7 @@ import React, { useState, useEffect} from 'react'
 import { CardPortafolio } from '../../components/CardPortafolio/CardPortafolio'
 import project from '../../assets/img/pistilo-project.jpg'
 import languages from '../../assets/img/languages.jpg'
-import reacatJs from '../../assets/img/reactJs.png'
+import reactJs from '../../assets/img/reactJs.png'
 import enapsys from '../../assets/img/enapsys.png'
 import Slider from 'react-slick'
 import './style.scss'
@@ -11,17 +11,17 @@ import 'slick-carousel/slick/slick-theme.css'
 
 const isBrowser = typeof window !== "undefined"
 
-const dataPorfaolio = [
+const dataPortafolio = [
   {
     title: 'programmingLanguages',
-    description: 'decriptionLanguages',
+    description: 'descriptionLanguages',
     image: languages,
     link: 'https://www.google.com'
   },
   {
     title: 'myFrameworks',
     description: 'descriptionFrameworks',
-    image: reacatJs,
+    image: reactJs,
     link: 'https://www.google.com'
   },
   {
@@ -124,7 +124,7 @@ export const Portafolio = () => {
               
             <Slider {...settingsSlider}>
           
-             { dataPorfaolio.map((item) => (
+             { dataPortafolio.map((item) => (
                 <CardPortafolio
                   key={item.title}
                   title={item.title}
