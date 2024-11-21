@@ -1,0 +1,90 @@
+---
+// Supports weights 100-900
+import "@fontsource-variable/dm-sans";
+
+import Header from "../components/Header.astro";
+import { ViewTransitions } from "astro:transitions";
+import LanguagePicker from "../components/LanguagePicker.astro";
+import { getLangFromUrl } from "../i18n/utils";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+---
+
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <ViewTransitions />
+  </head>
+  <body
+    class="relative text-[#0e4422] dark:text-[#bcfffb] h-full w-full bg-slate-50 dark:bg-slate-950"
+  >
+    <div
+      class="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24
+			bg-custom-light bg-custom-dark"
+    >
+      <!-- Contenido adicional -->
+    </div>
+
+    <Header />
+    <slot />
+  </body>
+</html>
+<style is:global>
+  :root {
+    color-scheme: light dark;
+  }
+  html {
+    font-family: "DM Sans Variable", system-ui, sans-serif;
+  }
+  body {
+    /*   background: #050505;  */
+    display: flex;
+    justify-content: center;
+    min-height: 100dvh;
+  }
+  /* En tu archivo global.css o dentro de un bloque <style is:global> */
+  .bg-custom-light {
+    background: radial-gradient(
+      125% 125% at 50% 10%,
+      transparent 40%,
+      rgba(0, 255, 238, 0.5) 100%
+    );
+  }
+
+  .dark .bg-custom-dark {
+    background: radial-gradient(
+      125% 125% at 50% 10%,
+      transparent 40%,
+      rgba(0, 255, 238, 0.18) 100%
+    );
+  }
+</style>
+
+<script is:inline>
+  const theme = (() => {
+    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+      return localStorage.getItem("theme");
+    }
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      return "dark";
+    }
+    return "light";
+  })();
+
+  if (theme === "light") {
+    document.documentElement.classList.remove("dark");
+  } else {
+    document.documentElement.classList.add("dark");
+  }
+  window.localStorage.setItem("theme", theme);
+</script>

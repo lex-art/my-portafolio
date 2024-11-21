@@ -1,0 +1,21 @@
+{
+  "name": "",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev & sleep 1 && (start  http://localhost:4321 || open  http://localhost:4321 || xdg-open  http://localhost:4321)",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/tailwind": "^5.1.2",
+    "@fontsource-variable/dm-sans": "^5.1.0",
+    "alpinejs": "^3.14.3",
+    "astro": "^4.16.13",
+    "tailwindcss": "^3.4.15",
+    "typescript": "^5.6.3"
+  }
+}
