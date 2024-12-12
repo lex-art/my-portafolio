@@ -1,0 +1,36 @@
+---
+import { Image } from "astro:assets";
+import { useI18Translations } from "../../i18n/utils";
+const { t } = useI18Translations(Astro.url);
+---
+
+<div class="w-full py-16 md:py-36 p-4">
+  <h2
+    style="letter-spacing: 2px;"
+    class="text-5xl text-center -rotate-2 pb-6 text-[#143258] dark:dark:text-[#7eeb54] font-just-another-hand"
+  >
+    👋🏽 Aloha! Soy Alexander
+  </h2>
+  <div class="flex flex-col lg:flex-row gap-10 justify-center items-center">
+    <Image
+      class="rounded-full object-fill object-center p-[2px] size-96"
+      src={import.meta.env.BASE_URL + "img/toy.svg"}
+      alt="Alexander"
+      width={250}
+      height={250}
+      loading="eager"
+    />
+
+    <h1
+      class="font-slackey text-6xl md:text-8xl dark:text-cyan-200 md:leading-[6.5rem]"
+    >
+      Me <strong class="text-[#1b3e65] dark:text-yellow-300">gusta</strong> darle
+      vida a las <strong class="text-[#1b3e65] dark:text-yellow-300"
+        >ideas</strong
+      > a <strong class="text-[#1b3e65] dark:text-yellow-300">través</strong> del
+      código y el <strong class="text-[#1b3e65] dark:text-yellow-300"
+        >diseño.</strong
+      >
+    </h1>
+  </div>
+</div>

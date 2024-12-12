@@ -1,9 +1,21 @@
 ---
+import SectionContainer from "../components/SectionContainer.astro";
 import Layout from "../layouts/Layout.astro";
+import About from "../components/Sections/About.astro";
+import Experiences from "../components/Sections/Experiences.astro";
+import Home from "../components/Sections/Home.astro";
 ---
 
 <Layout title="Alexander dev">
   <main class="px-4">
-    <slot />
+    <SectionContainer id="about" maxWidth="lg:max-w-6xl">
+      <Home />
+    </SectionContainer>
+    <SectionContainer id="experience">
+      <Experiences />
+    </SectionContainer>
+    <SectionContainer id="projects">
+      <About />
+    </SectionContainer>
   </main>
 </Layout>

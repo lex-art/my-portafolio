@@ -1,13 +1,109 @@
 ---
 import { languages } from "../i18n/ui";
-import { getLangFromUrl, useTranslatedPath } from "../i18n/utils";
+import { useI18Translations } from "../i18n/utils";
 
-const lang = getLangFromUrl(Astro.url);
-const translatePath = useTranslatedPath(lang);
+const { t, navigate } = useI18Translations(Astro.url);
 ---
 
-{
-  Object.entries(languages).map(([lang, label]) => (
-    <a href={translatePath("/", lang)}>{label}</a>
-  ))
-}
+<div class="relative">
+  <button
+    transition:persist
+    id="language-picker"
+    class="appearance-none border-none flex hover:scale-125 transition"
+  >
+    <span class="sr-only">{t("header.chooseLanguage")}</span>
+    <span
+      id="spanish"
+      class="lng-toggle-text transition-all scale text-white text-lg"
+    >
+      🇬🇹
+    </span>
+    <span
+      id="english"
+      class="lng-toggle-text transition-all scale hidden text-white text-lg"
+    >
+      🇺🇸
+    </span>
+  </button>
+  <div
+    transition:persist="true"
+    id="language-picker-menu"
+    class="hidden absolute scale-80 top-8 right-0 text-sm p-1 min-w-[8rem] rounded-md border border-gray-100 bg-white/90 dark:bg-gray-900/90 dark:border-gray-500/20 shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-md"
+  >
+    <ul>
+      {
+        Object.entries(languages).map(([lang, label]) => (
+          <li
+            class="themes-menu-option px-2 py-1.5 cursor-pointer hover:bg-neutral-400/40 dark:hover:bg-gray-500/50 rounded-sm"
+            data-lang={lang}
+          >
+            <a class="block w-full h-full" href={navigate("/", lang)}>
+              {label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>
+
+<script is:inline>
+  // Variables globales
+  const menu = document.getElementById("language-picker-menu");
+  const button = document.getElementById("language-picker");
+  const spanish = document.getElementById("spanish");
+  const english = document.getElementById("english");
+  let currentLang = localStorage.getItem("lang") || "es";
+
+  // Función para actualizar el idioma visual
+  const updateLanguageDisplay = () => {
+    if (currentLang === "es") {
+      spanish.classList.remove("hidden");
+      english.classList.add("hidden");
+    } else {
+      spanish.classList.add("hidden");
+      english.classList.remove("hidden");
+    }
+  };
+
+  // Función para abrir/cerrar el menú
+  const toggleMenu = () => {
+    menu.classList.toggle("hidden");
+  };
+
+  // Función para cambiar el idioma
+  const changeLanguage = (lang) => {
+    currentLang = lang;
+    localStorage.setItem("lang", lang);
+    updateLanguageDisplay();
+    menu.classList.add("hidden"); // Cierra el menú
+    const path = window.location.pathname.replace(/^\/(es|en)/, "");
+    const newPath = lang === "es" ? path : `/${lang}${path}`;
+    window.location.href = newPath || "/";
+  };
+
+  // Actualiza el idioma inicial
+  updateLanguageDisplay();
+
+  // Listener para abrir/cerrar el menú al hacer clic en el botón
+  button.addEventListener("click", (e) => {
+    e.stopPropagation(); // Evita que el clic cierre el menú
+    toggleMenu();
+  });
+
+  // Listener para seleccionar un idioma
+  menu.addEventListener("click", (e) => {
+    const target = e.target.closest(".themes-menu-option");
+    if (target) {
+      const lang = target.dataset.lang;
+      if (lang) changeLanguage(lang);
+    }
+  });
+
+  // Listener para cerrar el menú al hacer clic fuera de él
+  document.addEventListener("click", (e) => {
+    if (menu && !menu.contains(e.target) && !button.contains(e.target)) {
+      menu.classList.add("hidden");
+    }
+  });
+</script>

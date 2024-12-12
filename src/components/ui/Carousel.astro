@@ -1,0 +1,45 @@
+---
+import HtmlIcon from "../Icons/Logos/HtmlIcon.astro";
+import CssIcon from "../Icons/Logos/CssIcon.astro";
+---
+
+<div class="relative overflow-hidden w-full max-w-xl mx-auto m-2">
+  <!-- Contenedor del carrusel -->
+  <div
+    class="flex transition-transform duration-1000 ease-in-out"
+    id="carousel"
+  >
+    <!-- Iconos -->
+    <div class="min-w-full flex justify-center items-center p-4">
+      <HtmlIcon />
+    </div>
+    <div class="min-w-full flex justify-center items-center p-4">
+      <CssIcon />
+    </div>
+    <!-- Agrega más íconos de la misma forma -->
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const carousel = document.getElementById("carousel");
+    let currentIndex = 0;
+
+    const slide = () => {
+      const items = carousel?.children;
+      const totalItems = items?.length || 0;
+
+      // Actualiza el índice de la diapositiva
+      currentIndex = (currentIndex + 1) % totalItems;
+
+      // Calcula el desplazamiento
+      const offset = -currentIndex * 100;
+      if (carousel) {
+        carousel.style.transform = `translateX(${offset}%)`;
+      }
+    };
+
+    // Cambia de ícono cada segundo
+    setInterval(slide, 3000); // 1000 ms = 1 segundo
+  });
+</script>

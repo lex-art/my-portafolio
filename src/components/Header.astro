@@ -1,49 +1,100 @@
 ---
-import {
-  getLangFromUrl,
-  useTranslations,
-  useTranslatedPath,
-} from "../i18n/utils";
-import { languages } from "../i18n/ui";
+import { useI18Translations } from "../i18n/utils";
 import Dark from "../icons/Dark.astro";
 import Light from "../icons/Light.astro";
 import LanguagePicker from "./LanguagePicker.astro";
 
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
-const translatePath = useTranslatedPath(lang);
+const { t } = useI18Translations(Astro.url);
 ---
 
 <header
   class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto p-4 backdrop-blur"
 >
-  <nav class="flex flex-row gap-x-10">
-    <a href={translatePath("/about/")}>{t("nav.home")}</a>
-    <a href="#">{t("nav.about")}</a>
-    <a href="#">Projects</a>
-    <a href="#">Contact</a>
-    <!-- {
-      lang === "es" ? (
-        <a href={translatePath("/", lang)}>EN</a>
-      ) : (
-        <a href={translatePath("/", lang)}>ES</a>
-      )
-    } -->
+  <nav class="flex flex-row gap-x-8">
+    <a class="scale hover:scale-125 transition" href="#about"
+      >{t("header.home")}</a
+    >
+    <a class="scale hover:scale-125 transition" href="#experience"
+      >{t("header.works")}</a
+    >
+    <a class="scale hover:scale-125 transition" href="#projects"
+      >{t("header.about")}</a
+    >
+    <a class="scale hover:scale-125 transition" href="#contact"
+      >{t("header.contact")}</a
+    >
     <LanguagePicker />
     <button
       id="theme-toggle"
       type="button"
-      class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-x-3"
+      class="text-gray-500 dark:text-gray-400 hover:scale-125 transition focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg p-x-2"
     >
       <Dark />
       <Light />
     </button>
   </nav>
 </header>
+<script onload="client">
+  function smoothScrollTo(target, duration = 1000) {
+    const startPosition = window.scrollY;
+    const targetElement = document.querySelector(target);
+
+    if (!targetElement) {
+      console.warn(`El selector ${target} no existe.`);
+      return;
+    }
+
+    const targetPosition = targetElement.offsetTop;
+    const distance = targetPosition - startPosition;
+    let startTime = null;
+
+    function animation(currentTime) {
+      if (startTime === null) startTime = currentTime;
+      const elapsedTime = currentTime - startTime;
+      const ease = easeInOutQuad(
+        elapsedTime,
+        startPosition,
+        distance,
+        duration
+      );
+      window.scrollTo(0, ease);
+
+      if (elapsedTime < duration) {
+        requestAnimationFrame(animation);
+      }
+    }
+
+    function easeInOutQuad(t, b, c, d) {
+      t /= d / 2;
+      if (t < 1) return (c / 2) * t * t + b;
+      t--;
+      return (-c / 2) * (t * (t - 2) - 1) + b;
+    }
+
+    requestAnimationFrame(animation);
+  }
+
+  function attachSmoothScroll(selector, duration = 1000) {
+    const elements = document.querySelectorAll(selector);
+
+    elements.forEach((element) => {
+      element.addEventListener("click", (e) => {
+        e.preventDefault();
+        const target = element.getAttribute("href");
+        if (target) smoothScrollTo(target, duration);
+      });
+    });
+  }
+
+  // Inicializar el comportamiento de scroll
+  attachSmoothScroll('a[href^="#"]', 450);
+</script>
 <script>
   function applyTheme() {
-    var themeToggleDarkIcon = document.getElementById("theme-toggle-dark-icon");
-    var themeToggleLightIcon = document.getElementById(
+    const themeToggleDarkIcon = document.getElementById(
+      "theme-toggle-dark-icon"
+    );
+    const themeToggleLightIcon = document.getElementById(
       "theme-toggle-light-icon"
     );
     // Aplica el tema desde localStorage
@@ -62,13 +113,13 @@ const translatePath = useTranslatedPath(lang);
     }
 
     // Manejo del botón de cambio de tema
-    var themeToggleBtn = document.getElementById("theme-toggle");
+    const themeToggleBtn = document.getElementById("theme-toggle");
     themeToggleBtn?.addEventListener("click", function () {
       // Alterna visibilidad de los íconos
       themeToggleDarkIcon?.classList.toggle("hidden");
       themeToggleLightIcon?.classList.toggle("hidden");
 
-      // Cambia el tema y guarda en localStorage
+      // Cambia el tema y actualiza dinámicamente las clases
       if (localStorage.getItem("color-theme") === "dark") {
         document.documentElement.classList.remove("dark");
         localStorage.setItem("color-theme", "light");
@@ -78,6 +129,10 @@ const translatePath = useTranslatedPath(lang);
       }
     });
   }
+
+  // Inicializa el tema al cargar la página
   applyTheme();
-  document.addEventListener("astro:after-swap", applyTheme);
+
+  // Reactualiza el tema al cambiar de página en Astro
+  document.addEventListener("astro:after-swap", applyTheme); // Actualiza el tema al cambiar de página
 </script>
