@@ -1,6 +1,48 @@
 ---
 import HtmlIcon from "../Icons/Logos/HtmlIcon.astro";
 import CssIcon from "../Icons/Logos/CssIcon.astro";
+import JsIcon from "../Icons/Logos/JsIcon.astro";
+import ReactIcon from "../Icons/Logos/ReactIcon.astro";
+import NestJsIcon from "../Icons/Logos/NestJsIcon.astro";
+import NextJs from "../Icons/Logos/NextJs.astro";
+import ReduxIcon from "../Icons/Logos/ReduxIcon.astro";
+import GraphQLIcon from "../Icons/Logos/GraphQLIcon.astro";
+import GitIcon from "../Icons/Logos/GitIcon.astro";
+import PostgresIcon from "../Icons/Logos/PostgresIcon.astro";
+import MySqlIcon from "../Icons/Logos/MySqlIcon.astro";
+import AswIcon from "../Icons/Logos/AswIcon.astro";
+import BitriseIcon from "../Icons/Logos/BitriseIcon.astro";
+import DatadogIcon from "../Icons/Logos/DatadogIcon.astro";
+import PythonIcon from "../Icons/Logos/PythonIcon.astro";
+import DjangoIcon from "../Icons/Logos/DjangoIcon.astro";
+import TsIcon from "../Icons/Logos/TsIcon.astro";
+import AIIcon from "../Icons/Logos/AIIcon.astro";
+import PSIcon from "../Icons/Logos/PSIcon.astro";
+import FigmaIcon from "../Icons/Logos/FigmaIcon.astro";
+
+const dataIcons = [
+  TsIcon,
+  JsIcon,
+  ReactIcon,
+  NestJsIcon,
+  NextJs,
+  ReduxIcon,
+  GraphQLIcon,
+  GitIcon,
+  BitriseIcon,
+  DatadogIcon,
+  PostgresIcon,
+  MySqlIcon,
+  AswIcon,
+  HtmlIcon,
+  CssIcon,
+  PythonIcon,
+  DjangoIcon,
+  AIIcon,
+  PSIcon,
+  FigmaIcon,
+];
+const iconsPerView = 5; // Íconos visibles al mismo tiempo
 ---
 
 <div class="relative overflow-hidden w-full max-w-xl mx-auto m-2">
@@ -9,37 +51,45 @@ import CssIcon from "../Icons/Logos/CssIcon.astro";
     class="flex transition-transform duration-1000 ease-in-out"
     id="carousel"
   >
-    <!-- Iconos -->
-    <div class="min-w-full flex justify-center items-center p-4">
-      <HtmlIcon />
-    </div>
-    <div class="min-w-full flex justify-center items-center p-4">
-      <CssIcon />
-    </div>
-    <!-- Agrega más íconos de la misma forma -->
+    {
+      dataIcons.map((Icon, index) => (
+        <div
+          class={`flex justify-center items-center p-4 h-32`}
+          style={`min-width: ${100 / iconsPerView}%;`}
+        >
+          <div class="size-16 w-16 h-16">
+            <Icon />
+          </div>
+        </div>
+      ))
+    }
   </div>
 </div>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const carousel = document.getElementById("carousel");
+    const iconsPerView = 5;
     let currentIndex = 0;
 
     const slide = () => {
       const items = carousel?.children;
       const totalItems = items?.length || 0;
 
-      // Actualiza el índice de la diapositiva
-      currentIndex = (currentIndex + 1) % totalItems;
+      // Calcula el total de pasos basados en los íconos visibles
+      const totalSteps = Math.ceil(totalItems / iconsPerView);
 
-      // Calcula el desplazamiento
+      // Actualiza el índice del paso
+      currentIndex = (currentIndex + 1) % totalSteps;
+
+      // Calcula el desplazamiento basado en el índice actual
       const offset = -currentIndex * 100;
       if (carousel) {
         carousel.style.transform = `translateX(${offset}%)`;
       }
     };
 
-    // Cambia de ícono cada segundo
-    setInterval(slide, 3000); // 1000 ms = 1 segundo
+    // Cambia de grupo de íconos cada 3 segundos
+    setInterval(slide, 3000);
   });
 </script>
