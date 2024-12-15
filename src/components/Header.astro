@@ -27,7 +27,7 @@ const { t } = useI18Translations(Astro.url);
     <button
       id="theme-toggle"
       type="button"
-      class="text-gray-500 dark:text-gray-400 hover:scale-125 transition focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg p-x-2"
+      class="text-gray-500 dark:text-gray-400 hover:scale-125 transition focus:outline-none rounded-lg p-x-2"
     >
       <Dark />
       <Light />
@@ -91,6 +91,7 @@ const { t } = useI18Translations(Astro.url);
 </script>
 <script>
   function applyTheme() {
+    const backgroundLight = document.getElementById("background-dark");
     const themeToggleDarkIcon = document.getElementById(
       "theme-toggle-dark-icon"
     );
@@ -99,17 +100,23 @@ const { t } = useI18Translations(Astro.url);
     );
     // Aplica el tema desde localStorage
     if (
-      localStorage.getItem("color-theme") === "dark" ||
-      (!("color-theme" in localStorage) &&
+      localStorage.getItem("theme") === "dark" ||
+      (!("theme" in localStorage) &&
         window.matchMedia("(prefers-color-scheme: dark)").matches)
     ) {
       document.documentElement.classList.add("dark");
       themeToggleLightIcon?.classList.remove("hidden");
       themeToggleDarkIcon?.classList.add("hidden");
+      if (backgroundLight) {
+        backgroundLight.style.display = "block";
+      }
     } else {
       document.documentElement.classList.remove("dark");
       themeToggleDarkIcon?.classList.remove("hidden");
       themeToggleLightIcon?.classList.add("hidden");
+      if (backgroundLight) {
+        backgroundLight.style.display = "none";
+      }
     }
 
     // Manejo del botón de cambio de tema
@@ -120,12 +127,18 @@ const { t } = useI18Translations(Astro.url);
       themeToggleLightIcon?.classList.toggle("hidden");
 
       // Cambia el tema y actualiza dinámicamente las clases
-      if (localStorage.getItem("color-theme") === "dark") {
+      if (localStorage.getItem("theme") === "dark") {
+        if (backgroundLight) {
+          backgroundLight.style.display = "none";
+        }
         document.documentElement.classList.remove("dark");
-        localStorage.setItem("color-theme", "light");
+        localStorage.setItem("theme", "light");
       } else {
+        if (backgroundLight) {
+          backgroundLight.style.display = "block";
+        }
         document.documentElement.classList.add("dark");
-        localStorage.setItem("color-theme", "dark");
+        localStorage.setItem("theme", "dark");
       }
     });
   }

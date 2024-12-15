@@ -1,11 +1,10 @@
 ---
 import { Image } from "astro:assets";
-import { useI18Translations } from "../../i18n/utils";
-const { t } = useI18Translations(Astro.url);
 ---
 
-<div class="w-full py-16 md:py-36 p-4">
+<div class="w-full py-16 md:py-28 p-4">
   <h2
+    id="box"
     style="letter-spacing: 2px;"
     class="text-5xl text-center -rotate-2 pb-6 text-[#143258] dark:dark:text-[#7eeb54] font-just-another-hand"
   >
@@ -21,16 +20,22 @@ const { t } = useI18Translations(Astro.url);
       loading="eager"
     />
 
+    <!-- <h1>
+      <span>Primera línea</span>
+      <span>Segunda línea</span>
+      <span>Tercera línea</span>
+    </h1> -->
     <h1
-      class="font-slackey text-6xl md:text-8xl dark:text-cyan-200 md:leading-[6.5rem]"
+      id="main-title"
+      class="font-slackey text-6xl md:text-8xl dark:text-cyan-200 md:leading-[6.5rem] text-pretty [&>span]:text-[#1b3e65] [&>span]:dark:text-yellow-300"
     >
-      Me <strong class="text-[#1b3e65] dark:text-yellow-300">gusta</strong> darle
-      vida a las <strong class="text-[#1b3e65] dark:text-yellow-300"
-        >ideas</strong
-      > a <strong class="text-[#1b3e65] dark:text-yellow-300">través</strong> del
-      código y el <strong class="text-[#1b3e65] dark:text-yellow-300"
-        >diseño.</strong
+      Me <span id="title-part-1">gusta</span> darle vida a las <span
+        id="title-part-2">ideas</span
+      > a <span id="title-part-3">través</span> del código y el <span
+        id="title-part-4">diseño.</span
       >
     </h1>
   </div>
 </div>
+
+<script src="../../scripts/animation-title.ts"></script>

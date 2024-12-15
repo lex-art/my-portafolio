@@ -19,6 +19,7 @@ import TsIcon from "../Icons/Logos/TsIcon.astro";
 import AIIcon from "../Icons/Logos/AIIcon.astro";
 import PSIcon from "../Icons/Logos/PSIcon.astro";
 import FigmaIcon from "../Icons/Logos/FigmaIcon.astro";
+import AstroIcon from "../Icons/Logos/AstroIcon.astro";
 
 const dataIcons = [
   TsIcon,
@@ -29,7 +30,7 @@ const dataIcons = [
   ReduxIcon,
   GraphQLIcon,
   GitIcon,
-  BitriseIcon,
+  AstroIcon,
   DatadogIcon,
   PostgresIcon,
   MySqlIcon,
@@ -57,8 +58,8 @@ const iconsPerView = 5; // Íconos visibles al mismo tiempo
           class={`flex justify-center items-center p-4 h-32`}
           style={`min-width: ${100 / iconsPerView}%;`}
         >
-          <div class="size-16 w-16 h-16">
-            <Icon />
+          <div class="size-16 w-16 h-16 dark:opacity-50">
+            <Icon class="fill-current text-[#229379] dark:text-[#f4f4f4]" />
           </div>
         </div>
       ))

@@ -4,18 +4,21 @@ import Layout from "../layouts/Layout.astro";
 import About from "../components/Sections/About.astro";
 import Experiences from "../components/Sections/Experiences.astro";
 import Home from "../components/Sections/Home.astro";
+import Works from "../components/Sections/Works.astro";
 ---
 
 <Layout title="Alexander dev">
   <main class="px-4">
-    <SectionContainer id="about" maxWidth="lg:max-w-6xl">
+    <SectionContainer id="about" maxWidth="lg:max-w-7xl">
       <Home />
     </SectionContainer>
-    <SectionContainer id="experience">
-      <Experiences />
+    <SectionContainer id="experience" maxWidth="lg:max-w-6xl">
+      <Works />
+      <!-- <Experiences /> -->
     </SectionContainer>
     <SectionContainer id="projects">
       <About />
     </SectionContainer>
   </main>
 </Layout>
+<script src="../scripts/animation-scroll.ts"></script>
