@@ -28,17 +28,22 @@ import Carousel from "../ui/Carousel.astro";
         <Badge>¿Tines un proyecto en mente?</Badge>
       </a>
     </div>
-    <h1 class="text-6xl font-bold font-slackey">
-      🙋🏽‍♂️ <strong class="text-green-700 dark:text-yellow-300">Alexander</strong> aquí!
-    </h1>
+    <div id="title-about">
+      <h1 class="text-6xl font-bold font-slackey">
+        🙋🏽‍♂️ <strong class="text-green-700 dark:text-yellow-300">Alexander</strong
+        > aquí!
+      </h1>
+    </div>
 
-    <h3 class="font-light text-lg mt-5">
-      M.A. en Seguridad Informática (C. L.) <strong
-        class="text-green-700 dark:text-yellow-300">|</strong
-      > Ingeniero en Sistemas <strong
-        class="text-green-700 dark:text-yellow-300">|</strong
-      >
-      Desarrollador de Software
+    <h3 id="about-me-subtitle" class="font-light text-lg mt-5">
+      <span>
+        M.A. en Seguridad Informática (C. L.) <strong
+          class="text-green-700 dark:text-yellow-300">|</strong
+        > Ingeniero en Sistemas <strong
+          class="text-green-700 dark:text-yellow-300">|</strong
+        >
+        Desarrollador de Software
+      </span>
     </h3>
     <nav class="flex flex-wrap mt-5">
       <BadgeSocial href="mailto:ochanaxo@gmail.com"
@@ -53,9 +58,10 @@ import Carousel from "../ui/Carousel.astro";
       >
     </nav>
     <div
+      id="text-about"
       class="[&>p]:text-lg [&>p]:mt-5 [&>p>strong]:text-green-700 [&>p>strong]:dark:text-yellow-300"
     >
-      <p class="font-[100]">
+      <p class="font-[300]">
         Originario de <strong>🇬🇹</strong> ,<strong>
           +5 años de experiencia en el campo del desarrollo de software,</strong
         > con enfoque en desarrollo web, desarrollo móvil y ciberseguridad. <strong
@@ -63,7 +69,7 @@ import Carousel from "../ui/Carousel.astro";
           calidad y accesibles.</strong
         >
       </p>
-      <p class="font-[100]">
+      <p class="font-[300]">
         <strong
           >Aunque no me gusta mencionar las tecnologías que utilizo
         </strong> porque cada proyecto es diferente y requiere de tecnologías específicas
@@ -79,3 +85,4 @@ import Carousel from "../ui/Carousel.astro";
     <Carousel />
   </div>
 </div>
+<script src="../../scripts/animation-about.ts"></script>

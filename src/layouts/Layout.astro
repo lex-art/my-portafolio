@@ -8,7 +8,7 @@ import "@fontsource/just-another-hand";
 import "../styles.css";
 
 import Header from "../components/Header.astro";
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 import { getLangFromUrl } from "../i18n/utils";
 
 interface Props {
@@ -30,7 +30,7 @@ const lang = getLangFromUrl(Astro.url);
     <link rel="icon" href="/apple-favicon.png" sizes="any" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <ViewTransitions />
+    <ClientRouter />
     <!-- <script src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js"
     ></script> -->
   </head>

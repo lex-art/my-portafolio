@@ -27,7 +27,7 @@ export function animateTextFade(element: HTMLElement, { direction, staggerChildr
           children.forEach((child, index) => {
             animate(child, FADE_DOWN.show as any, {
               delay: index * staggerChildren,
-              duration: 1,
+              duration: 1.5,
               easing: "ease-out",
             } as any);
           });
