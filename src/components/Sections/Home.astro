@@ -1,8 +1,28 @@
 ---
 import { Image } from "astro:assets";
+import MetricCars from "../MetricCars.astro";
+
+const metric = [
+  {
+    value: 5,
+    description: "Años de experiencia",
+  },
+  {
+    value: 10,
+    description: "Proyectos completados",
+  },
+  {
+    value: 318,
+    description: "Contribuciones en GitHub",
+  },
+  {
+    value: 15,
+    description: "Tecnologías dominadas",
+  },
+];
 ---
 
-<div class="w-full py-16 md:py-28 p-4">
+<div class="w-full py-28 md:py-28 px-4">
   <h2
     id="box"
     style="letter-spacing: 2px;"
@@ -20,14 +40,9 @@ import { Image } from "astro:assets";
       loading="eager"
     />
 
-    <!-- <h1>
-      <span>Primera línea</span>
-      <span>Segunda línea</span>
-      <span>Tercera línea</span>
-    </h1> -->
     <h1
       id="main-title"
-      class="font-slackey text-6xl md:text-8xl dark:text-cyan-200 md:leading-[6.5rem] text-pretty [&>span]:text-[#1b3e65] [&>span]:dark:text-yellow-300"
+      class="font-slackey text-4xl md:text-7xl xl:text-8xl text-center lg:text-left dark:text-cyan-200 md:leading-[6.5rem] text-pretty [&>span]:text-[#1b3e65] [&>span]:dark:text-yellow-300"
     >
       Me <span id="title-part-1">gusta</span> darle vida a las <span
         id="title-part-2">ideas</span
@@ -35,6 +50,9 @@ import { Image } from "astro:assets";
         id="title-part-4">diseño.</span
       >
     </h1>
+  </div>
+  <div class="flex justify-center flex-wrap h-full w-full gap-8 m-3">
+    {metric.map((item) => <MetricCars {...item} />)}
   </div>
 </div>
 

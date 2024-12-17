@@ -1,6 +1,6 @@
 import { animate, scroll } from "motion"
-scroll((progress: number) => console.log(progress))
-
+/* scroll((progress: number) => console.log(progress))
+ */
 export function animateTextFade(element: HTMLElement, { direction, staggerChildren = 0.1 }: {
   direction: "up" | "down";
   staggerChildren?: number;

@@ -1,0 +1,15 @@
+---
+const { description, value } = Astro.props;
+---
+
+<div
+  class="p-4 bg-white rounded-lg md:p-4 dark:bg-cyan-950 shadow-md hover:scale-105 transition-all ease-in-out duration-700"
+>
+  <dl class="gap-8 p-3 mx-auto dark:text-[#7eeb54] sm:p-2">
+    <div class="flex flex-col items-center justify-center">
+      <dt class="mb-2 text-5xl font-bold value-counter">+{value}</dt>
+      <dd class="text-gray-500 dark:text-gray-400">{description}</dd>
+    </div>
+  </dl>
+</div>
+<script src="../scripts/counter-animation.ts"></script>
