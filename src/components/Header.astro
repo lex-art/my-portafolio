@@ -22,7 +22,7 @@ const { t, lang } = useI18Translations(Astro.url);
     >
     <a
       class="scale hover:scale-125 transition"
-      href={`pdf/oscar_chanax_cv_${lang}.pdf`}
+      href={`${import.meta.env.BASE_URL}pdf/oscar_chanax_cv_${lang}.pdf`}
       download>{t("header.downloadCV")}</a
     >
     <LanguagePicker />
