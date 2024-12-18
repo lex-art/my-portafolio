@@ -69,11 +69,13 @@ const { t, navigate } = useI18Translations(Astro.url);
   const button = document.getElementById("language-picker");
   const spanish = document.getElementById("spanish");
   const english = document.getElementById("english");
-  let currentLang = localStorage.getItem("lang") || "es";
+  let savedLang = localStorage.getItem("lang") || "es";
+  const lang = window.location.pathname.split("/")[1];
+  const currentLang = lang === "" ? "es" : lang;
 
   // Función para actualizar el idioma visual
   const updateLanguageDisplay = () => {
-    if (currentLang === "es") {
+    if (savedLang === "es") {
       spanish.classList.remove("hidden");
       english.classList.add("hidden");
     } else {
@@ -89,7 +91,7 @@ const { t, navigate } = useI18Translations(Astro.url);
 
   // Función para cambiar el idioma
   const changeLanguage = (lang) => {
-    currentLang = lang;
+    savedLang = lang;
     localStorage.setItem("lang", lang);
     updateLanguageDisplay();
     menu.classList.add("hidden"); // Cierra el menú
@@ -122,4 +124,8 @@ const { t, navigate } = useI18Translations(Astro.url);
       menu.classList.add("hidden");
     }
   });
+
+  if (currentLang !== savedLang) {
+     changeLanguage(savedLang); 
+  }
 </script>

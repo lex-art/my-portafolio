@@ -4,9 +4,16 @@ import Layout from "../../layouts/Layout.astro";
 import About from "../../components/locales/en/Sections/About.astro";
 import Home from "../../components/locales/en/Sections/Home.astro";
 import Works from "../../components/locales/en/Sections/Works.astro";
+import { useI18Translations } from "../../i18n/utils";
+
+const { t } = useI18Translations(Astro.url);
 ---
 
-<Layout title="Alexander dev">
+<Layout
+  title={t("common.title")}
+  description={t("common.description")}
+  keyWords={t("common.keywords")}
+>
   <main class="px-4">
     <SectionContainer id="about" width="lg:max-w-6xl md:max-w-2xl">
       <Home />

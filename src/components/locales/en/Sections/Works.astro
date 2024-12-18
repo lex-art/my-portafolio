@@ -4,7 +4,7 @@ import Team from "../../../Icons/Team.astro";
 ---
 
 <div
-  class="flex min-h-dvh w-full items-center justify-center flex-col gap-8 p-14"
+  class="flex min-h-dvh w-full items-center justify-center flex-col gap-12 md:gap-8 p-14"
 >
   <div class="flex gap-4 flex-col items-center md:flex-row md:items-start">
     <div id="works-together" class="w-full md:w-6/12">
@@ -24,13 +24,13 @@ import Team from "../../../Icons/Team.astro";
     <div class="w-6/12 flex items-center justify-center">
       <div
         id="image-works-0"
-        class="hover:scale-105 transition-all ease-in-out duration-700 rotate-2"
+        class="hover:scale-105 transition-all ease-in-out duration-700 rotate-2 pt-4 md:pt-0"
       >
         <Image
           class="rounded-lg rotate-0"
           src={import.meta.env.BASE_URL + "img/profile.webp"}
           alt="Trabajos"
-          width={250}
+          width={280}
           height={200}
           loading="lazy"
         />
@@ -75,7 +75,7 @@ import Team from "../../../Icons/Team.astro";
     </div>
     <div
       id="image-works-1"
-      class="w-full md:w-6/12 flex items-center justify-center hover:scale-105 transition-all ease-in-out duration-700 rotate-2"
+      class="w-full md:w-6/12 flex items-center justify-center hover:scale-105 transition-all ease-in-out duration-700 rotate-2 pt-4 md:pt-0"
     >
       <Image
         class="rounded-lg shadow-lg"
@@ -123,7 +123,7 @@ import Team from "../../../Icons/Team.astro";
     </div>
     <div
       id="image-works-2"
-      class="w-full md:w-6/12 flex items-center justify-center hover:scale-105 transition-all ease-in-out duration-700 -rotate-2"
+      class="w-full md:w-6/12 flex items-center justify-center hover:scale-105 transition-all ease-in-out duration-700 -rotate-2 pt-4 md.pt-0"
     >
       <Image
         class="rounded-lg shadow-lg"
