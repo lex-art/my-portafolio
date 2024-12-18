@@ -1,6 +1,7 @@
 import { animate, scroll } from "motion"
 /* scroll((progress: number) => console.log(progress))
  */
+
 export function animateTextFade(element: HTMLElement, { direction, staggerChildren = 0.1 }: {
   direction: "up" | "down";
   staggerChildren?: number;
@@ -46,4 +47,20 @@ const h1 = document.querySelector("h1"); // Selecciona tu h2 existente
 if (h1) {
  
   animateTextFade(h1, { direction: "down", staggerChildren: 0.2 });
+}
+const image0 = document.getElementById("image-works-0")
+const image = document.getElementById("image-works-1")
+const image2 = document.getElementById("image-works-2")
+
+if(image0) {
+  //animate(image, { opacity: [0, 1], scale: [0.5, 1] }, { duration: 1.5, easing: "ease-out" })
+  animateTextFade(image0, { direction: "down", staggerChildren: 0.2 });
+}
+
+if(image) {
+  animateTextFade(image, { direction: "down", staggerChildren: 0.2 });
+}
+
+if(image2) {
+  animateTextFade(image2, { direction: "down", staggerChildren: 0.2 });
 }

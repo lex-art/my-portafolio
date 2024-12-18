@@ -1,0 +1,75 @@
+---
+import { Image } from "astro:assets";
+import BadgeSocial from "../../../Badges/BadgeSocial.astro";
+import LinkedInIcon from "../../../Icons/LinkedInIcon.astro";
+import InstagramIcon from "../../../Icons/InstagramIcon.astro";
+import MailIcon from "../../../Icons/MailIcon.astro";
+import Carousel from "../../../ui/Carousel.astro";
+---
+
+<div
+  class="flex min-h-dvh w-full items-center justify-center flex-col gap-20 p-8"
+>
+  <div>
+    <div id="title-about">
+      <h1 class="text-5xl md:text-6xl font-bold font-slackey">
+        🙋🏽‍♂️ <span class="text-green-700 dark:text-yellow-300">Alexander</span> here!
+      </h1>
+    </div>
+
+    <h3 id="about-me-subtitle" class="font-light text-lg mt-5">
+      <span>
+        M.A. in Computer Security (C. L.) <strong
+          class="text-green-700 dark:text-yellow-300">|</strong
+        > Systems Engineer <strong class="text-green-700 dark:text-yellow-300"
+          >|</strong
+        >
+        Software Developer
+      </span>
+    </h3>
+    <nav class="flex flex-wrap mt-5 gap-4">
+      <BadgeSocial href="mailto:ochanaxo@gmail.com"
+        ><MailIcon />Email</BadgeSocial
+      >
+      <BadgeSocial href="https://www.linkedin.com/in/oscar-chanax-82b5691b9/"
+        ><LinkedInIcon />LinkedIn</BadgeSocial
+      >
+      <BadgeSocial href="https://www.instagram.com/alexanderdev_/">
+        <InstagramIcon />
+        Instagram</BadgeSocial
+      >
+    </nav>
+    <div
+      id="text-about"
+      class="[&>p]:text-lg [&>p]:mt-5 [&>p>strong]:text-green-700 [&>p>strong]:dark:text-yellow-300"
+    >
+      <p class="font-[300]">
+        Originally from <strong>🇬🇹</strong>, <strong
+          >+5 years of experience in the field of software development,</strong
+        > with a focus on web development, mobile development, and cybersecurity.
+        <strong>
+          I help people and companies build quality and accessible digital
+          products.</strong
+        >
+      </p>
+      <p class="font-[300]">
+        I started in <strong>programming since university.</strong> This, combined
+        with <strong>knowledge in graphic design</strong>, allowed me to have a
+        broader vision of how <strong
+          >design can be combined with programming to create innovative and
+          functional digital products.</strong
+        >
+      </p>
+      <p class="font-[300]">
+        Don't hesitate to contact me if <strong
+          >you have an idea or project in mind</strong
+        >, or to participate in a project <strong
+          >where I can contribute my knowledge and skills.</strong
+        >
+      </p>
+    </div>
+
+    <Carousel />
+  </div>
+</div>
+<script src="../../../../scripts/animation-about.ts"></script>

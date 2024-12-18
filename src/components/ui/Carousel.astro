@@ -43,10 +43,9 @@ const dataIcons = [
   PSIcon,
   FigmaIcon,
 ];
-const iconsPerView = 5; // Íconos visibles al mismo tiempo
 ---
 
-<div class="relative overflow-hidden w-full max-w-xl mx-auto m-2">
+<div class="relative overflow-hidden w-full max-w-60 md:max-w-xl mx-auto m-2">
   <!-- Contenedor del carrusel -->
   <div
     class="flex transition-transform duration-1000 ease-in-out"
@@ -55,8 +54,7 @@ const iconsPerView = 5; // Íconos visibles al mismo tiempo
     {
       dataIcons.map((Icon, index) => (
         <div
-          class={`flex justify-center items-center p-4 h-32`}
-          style={`min-width: ${100 / iconsPerView}%;`}
+          class={`flex justify-center items-center p-4 h-32 w-full handle-width min-w-[50%] md:min-w-[20%]`}
         >
           <div class="size-16 w-16 h-16 dark:opacity-50">
             <Icon class="fill-current text-[#229379] dark:text-[#f4f4f4]" />
@@ -70,8 +68,14 @@ const iconsPerView = 5; // Íconos visibles al mismo tiempo
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const carousel = document.getElementById("carousel");
-    const iconsPerView = 5;
+    const iconsPerView = getIconsPerView();
     let currentIndex = 0;
+
+    function getIconsPerView() {
+      if (window.innerWidth < 640) return 3; // Móviles
+      if (window.innerWidth < 1024) return 2; // Tablets
+      return 5; // Escritorio
+    }
 
     const slide = () => {
       const items = carousel?.children;

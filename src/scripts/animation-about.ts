@@ -1,5 +1,5 @@
 import { animate } from "motion";
-import { animateTextFade } from "./animation-scroll";
+import { animateTextFade } from "./animation-works";
 
 const textDescription = document.getElementById("text-about");
 const title = document.getElementById("title-about");

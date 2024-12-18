@@ -8,6 +8,7 @@ import "@fontsource/just-another-hand";
 import "../styles.css";
 
 import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 import { ClientRouter } from "astro:transitions";
 import { getLangFromUrl } from "../i18n/utils";
 
@@ -31,11 +32,9 @@ const lang = getLangFromUrl(Astro.url);
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <ClientRouter />
-    <!-- <script src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js"
-    ></script> -->
   </head>
   <body
-    class="relative text-[#229379] dark:text-[#bcfffb] h-full w-full bg-slate-100 dark:bg-slate-900"
+    class="relative text-[#229379] dark:text-[#bcfffb] h-full w-full bg-slate-100 dark:bg-slate-900 block"
   >
     <div
       id="background-light"
@@ -52,6 +51,7 @@ const lang = getLangFromUrl(Astro.url);
     </div>
     <Header />
     <slot />
+    <Footer />
   </body>
 </html>
 <style is:global>
@@ -72,5 +72,10 @@ const lang = getLangFromUrl(Astro.url);
     overflow-x: hidden;
     overscroll-behavior: none;
     color: #e1ffff;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 </style>

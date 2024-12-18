@@ -1,7 +1,21 @@
 ---
+import SectionContainer from "../../components/SectionContainer.astro";
 import Layout from "../../layouts/Layout.astro";
+import About from "../../components/locales/en/Sections/About.astro";
+import Home from "../../components/locales/en/Sections/Home.astro";
+import Works from "../../components/locales/en/Sections/Works.astro";
 ---
 
 <Layout title="Alexander dev">
-  <main><slot /></main>
+  <main class="px-4">
+    <SectionContainer id="about" width="lg:max-w-6xl md:max-w-2xl">
+      <Home />
+    </SectionContainer>
+    <SectionContainer id="experience" width="lg:max-w-6xl md:max-w-4xl">
+      <Works />
+    </SectionContainer>
+    <SectionContainer id="projects">
+      <About />
+    </SectionContainer>
+  </main>
 </Layout>

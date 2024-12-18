@@ -1,24 +1,21 @@
 ---
 import SectionContainer from "../components/SectionContainer.astro";
 import Layout from "../layouts/Layout.astro";
-import About from "../components/Sections/About.astro";
-import Experiences from "../components/Sections/Experiences.astro";
-import Home from "../components/Sections/Home.astro";
-import Works from "../components/Sections/Works.astro";
+import About from "../components/locales/es/Sections/About.astro";
+import Home from "../components/locales/es/Sections/Home.astro";
+import Works from "../components/locales/es/Sections/Works.astro";
 ---
 
 <Layout title="Alexander dev">
   <main class="px-4">
-    <SectionContainer id="about" maxWidth="lg:max-w-7xl">
+    <SectionContainer id="about" width="lg:max-w-6xl md:max-w-2xl">
       <Home />
     </SectionContainer>
-    <SectionContainer id="experience" maxWidth="lg:max-w-6xl">
+    <SectionContainer id="experience" width="lg:max-w-6xl md:max-w-4xl">
       <Works />
     </SectionContainer>
-    <!-- 
     <SectionContainer id="projects">
       <About />
-    </SectionContainer> -->
+    </SectionContainer>
   </main>
 </Layout>
-<script src="../scripts/animation-scroll.ts"></script>
