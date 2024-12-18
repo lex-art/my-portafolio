@@ -4,7 +4,7 @@ import Dark from "../icons/Dark.astro";
 import Light from "../icons/Light.astro";
 import LanguagePicker from "./LanguagePicker.astro";
 
-const { t } = useI18Translations(Astro.url);
+const { t, lang } = useI18Translations(Astro.url);
 ---
 
 <header
@@ -20,9 +20,11 @@ const { t } = useI18Translations(Astro.url);
     <a class="scale hover:scale-125 transition" href="#projects"
       >{t("header.about")}</a
     >
-  <!--   <a class="scale hover:scale-125 transition" href="#contact"
-      >{t("header.contact")}</a
-    > -->
+    <a
+      class="scale hover:scale-125 transition"
+      href={`pdf/oscar_chanax_cv_${lang}.pdf`}
+      download>{t("header.downloadCV")}</a
+    >
     <LanguagePicker />
     <button
       id="theme-toggle"
