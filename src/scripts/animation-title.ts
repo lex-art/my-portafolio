@@ -17,7 +17,7 @@ const animationValue = {
   y: [0,  15,  0],
 }
 
-const isDark = localStorage.getItem('theme') === 'dark';
+// const isDark = localStorage.getItem('theme') === 'dark';
 
 
 /* const color = isDark ? "#a5f3fc" : "#229379";

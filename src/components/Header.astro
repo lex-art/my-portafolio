@@ -36,7 +36,7 @@ const { t, lang } = useI18Translations(Astro.url);
     </button>
   </nav>
 </header>
-<script onload="client">
+<script  is:inline>
   function smoothScrollTo(target, duration = 1000) {
     const startPosition = window.scrollY;
     const targetElement = document.querySelector(target);

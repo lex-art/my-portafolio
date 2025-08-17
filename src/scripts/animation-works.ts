@@ -1,4 +1,4 @@
-import { animate, scroll } from "motion"
+import { animate } from "motion"
 /* scroll((progress: number) => console.log(progress))
  */
 

@@ -20,10 +20,10 @@ export default defineConfig({
       {
         name: 'i18n-routers',
         configureServer(server){
-          server.middlewares.use((req, res, next) => {
-            const locale = req.originalUrl.split('/')[1];
+          server.middlewares.use((req, _, next) => {
+            const locale = req?.originalUrl?.split('/')[1];
             if(locale && !['es', 'en'].includes(locale)){
-              req.originalUrl = req.originalUrl.replace(`/${locale}`, "");
+              req.originalUrl = req?.originalUrl?.replace(`/${locale}`, "");
             }
             next();
           });

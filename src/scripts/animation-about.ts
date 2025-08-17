@@ -1,4 +1,4 @@
-import { animate } from "motion";
+// import { animate } from "motion";
 import { animateTextFade } from "./animation-works";
 
 const textDescription = document.getElementById("text-about");
