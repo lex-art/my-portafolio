@@ -2,6 +2,11 @@
 import { Image } from "astro:assets";
 import MetricCars from "../../../ui/MetricCars.astro";
 import Badge from "../../../Badges/Badge.astro";
+import BadgeSocial from "../../../Badges/BadgeSocial.astro";
+import MailIcon from "../../../Icons/MailIcon.astro";
+import GitIcon from "../../../Icons/Logos/GitIcon.astro";
+import LinkedInIcon from "../../../Icons/LinkedInIcon.astro";
+import InstagramIcon from "../../../Icons/InstagramIcon.astro";
 
 const metric = [
   {
@@ -81,6 +86,21 @@ const metric = [
         </svg></Badge
       >
     </a>
+  </div>
+  <div class="flex items-center justify-center">
+    <nav class="flex flex-wrap mt-5 gap-4">
+      <BadgeSocial href="https://github.com/lex-art">
+        <GitIcon fill="#ffff" width="24" height="24" />
+        GitHub
+      </BadgeSocial>
+      <BadgeSocial href="https://www.linkedin.com/in/oscar-chanax-82b5691b9/"
+        ><LinkedInIcon />LinkedIn</BadgeSocial
+      >
+      <BadgeSocial href="https://www.instagram.com/__lex__art__">
+        <InstagramIcon />
+        Instagram</BadgeSocial
+      >
+    </nav>
   </div>
 </div>
 

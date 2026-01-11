@@ -10,12 +10,12 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
+    "@astrojs/check": "^0.9.6",
     "@astrojs/tailwind": "^6.0.2",
     "@fontsource-variable/dm-sans": "^5.1.0",
     "@fontsource/just-another-hand": "^5.1.0",
     "@fontsource/slackey": "^5.1.0",
-    "astro": "^5.13.2",
+    "astro": "^5.16.8",
     "motion": "^11.13.1",
     "tailwindcss": "^3.4.15",
     "typescript": "^5.6.3"
