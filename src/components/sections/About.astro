@@ -1,0 +1,99 @@
+---
+import { useI18Translations } from "../../i18n/utils";
+import { social } from "../../data/site";
+import BadgeSocial from "../Badges/BadgeSocial.astro";
+import MailIcon from "../Icons/MailIcon.astro";
+import GitIcon from "../Icons/Logos/GitIcon.astro";
+import LinkedInIcon from "../Icons/LinkedInIcon.astro";
+import InstagramIcon from "../Icons/InstagramIcon.astro";
+import StackGrid from "../ui/StackGrid.astro";
+
+const { t } = useI18Translations(Astro.url);
+---
+
+<section class="about" id="profile">
+  <div id="title-about">
+    <span class="kicker">{t("home.about.kicker")}</span>
+    <h2 class="about-title">{t("home.about.title")}</h2>
+    <p class="about-subtitle">{t("home.about.subtitle")}</p>
+  </div>
+
+  <nav class="about-social" aria-label="Contact">
+    <BadgeSocial href={social.email}>
+      <MailIcon />
+      Email
+    </BadgeSocial>
+    <BadgeSocial href={social.github}>
+      <GitIcon width="18" height="18" fill="currentColor" />
+      GitHub
+    </BadgeSocial>
+    <BadgeSocial href={social.linkedin}>
+      <LinkedInIcon />
+      LinkedIn
+    </BadgeSocial>
+    <BadgeSocial href={social.instagram}>
+      <InstagramIcon />
+      Instagram
+    </BadgeSocial>
+  </nav>
+
+  <div id="text-about" class="about-copy">
+    <p>{t("home.about.p1")}</p>
+    <p>{t("home.about.p2")}</p>
+    <p>{t("home.about.p3")}</p>
+  </div>
+
+  <div class="about-stack">
+    <span class="kicker">{t("home.about.stackKicker")}</span>
+    <StackGrid />
+  </div>
+</section>
+
+<style>
+  .about {
+    padding: calc(2.5 * var(--leading)) 0 calc(3 * var(--leading));
+  }
+
+  .about-title {
+    font-size: clamp(30px, 3.2vw, 42px);
+    line-height: calc(1.5 * var(--leading));
+    letter-spacing: -0.012em;
+    margin: 0;
+  }
+
+  .about-subtitle {
+    font-size: 15.5px;
+    line-height: var(--leading);
+    color: color-mix(in srgb, var(--color-text) 64%, transparent);
+    margin: var(--half) 0 0;
+    max-width: var(--measure);
+  }
+
+  .about-social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: var(--leading);
+  }
+
+  .about-copy {
+    margin-top: var(--leading);
+    max-width: var(--measure);
+  }
+
+  .about-copy :global(p) {
+    font-size: 15.5px;
+    line-height: var(--leading);
+    color: color-mix(in srgb, var(--color-text) 78%, transparent);
+    margin: 0 0 var(--leading);
+  }
+
+  .about-copy :global(p:last-child) {
+    margin-bottom: 0;
+  }
+
+  .about-stack {
+    margin-top: calc(2 * var(--leading));
+  }
+</style>
+

@@ -1,0 +1,167 @@
+---
+import { Image } from "astro:assets";
+import { useI18Translations } from "../../i18n/utils";
+import { experience } from "../../data/site";
+
+const { t } = useI18Translations(Astro.url);
+---
+
+<section class="experience" id="career">
+  <span class="kicker">{t("experience.experienceKicker")}</span>
+  <h2 class="experience-title">{t("experience.experienceTitle")}</h2>
+
+  <ol class="timeline">
+    {
+      experience.map((item) => (
+        <li class="entry">
+          <div class="entry-meta">
+            <time class="entry-date tnum">
+              {t(`experience.items.${item.key}.date`)}
+            </time>
+            <h3 class="entry-title">
+              {t(`experience.items.${item.key}.title`)}
+            </h3>
+          </div>
+          <div class="entry-body">
+            <p class="entry-copy">
+              {t(`experience.items.${item.key}.description`)}
+            </p>
+            {item.link && (
+              <a
+                class="btn btn-secondary entry-link"
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t("experience.visit")}
+                <svg
+                  class="size-3"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 10"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M1 5h12m0 0L9 1m4 4L9 9"
+                  />
+                </svg>
+              </a>
+            )}
+          </div>
+          <figure class="entry-figure lighten">
+            <Image
+              class="entry-image"
+              src={item.image}
+              alt={t(`experience.items.${item.key}.title`)}
+              width={420}
+              height={280}
+              loading="lazy"
+            />
+          </figure>
+        </li>
+      ))
+    }
+  </ol>
+</section>
+
+<style>
+  .experience {
+    padding: calc(2.5 * var(--leading)) 0 calc(3 * var(--leading));
+  }
+
+  .experience-title {
+    font-size: clamp(30px, 3.2vw, 42px);
+    line-height: calc(1.5 * var(--leading));
+    letter-spacing: -0.012em;
+    margin: 0 0 var(--leading);
+  }
+
+  .timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .entry {
+    display: grid;
+    grid-template-columns: minmax(0, 240px) minmax(0, 1fr) minmax(0, 320px);
+    gap: var(--leading) clamp(24px, 4vw, 64px);
+    align-items: start;
+    padding: calc(1.5 * var(--leading)) 0;
+    position: relative;
+  }
+
+  .entry + .entry::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--color-rule-strong) 48px calc(100% - 48px),
+      transparent
+    );
+  }
+
+  /* A short solid accent mark — accent marks stay solid where full-width
+     rules fade. */
+  .entry-meta {
+    border-left: 2px solid var(--color-accent);
+    padding-left: 14px;
+  }
+
+  .entry-date {
+    display: block;
+    font-size: 13px;
+    line-height: var(--half);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .entry-title {
+    font-size: 18px;
+    line-height: var(--leading);
+    margin: var(--half) 0 0;
+  }
+
+  .entry-copy {
+    font-size: 15.5px;
+    line-height: var(--leading);
+    color: color-mix(in srgb, var(--color-text) 78%, transparent);
+    margin: 0;
+    max-width: 52ch;
+  }
+
+  .entry-link {
+    margin-top: var(--half);
+  }
+
+  .entry-figure {
+    margin: 0;
+  }
+
+  .entry-image {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+  }
+
+  @media (max-width: 880px) {
+    .entry {
+      grid-template-columns: 1fr;
+      gap: var(--half);
+    }
+    .entry-copy {
+      max-width: var(--measure);
+    }
+  }
+</style>

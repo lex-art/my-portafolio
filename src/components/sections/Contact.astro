@@ -1,0 +1,56 @@
+---
+import { useI18Translations } from "../../i18n/utils";
+import { social } from "../../data/site";
+
+const { t } = useI18Translations(Astro.url);
+---
+
+<hr class="rule" />
+
+<section class="close" id="contact">
+  <span class="kicker">{t("home.contact.kicker")}</span>
+  <h2 class="close-title">{t("home.contact.title")}</h2>
+  <p class="close-sub">{t("home.contact.sub")}</p>
+  <a class="btn btn-primary close-action" href={social.email} rel="noopener">
+    {t("home.contact.action")}
+    <svg
+      class="size-3"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 14 10"
+    >
+      <path
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M1 5h12m0 0L9 1m4 4L9 9"></path>
+    </svg>
+  </a>
+</section>
+
+<style>
+  .close {
+    padding: calc(2.5 * var(--leading)) 0 calc(2 * var(--leading));
+  }
+
+  .close-title {
+    font-size: 24px;
+    line-height: var(--leading);
+    margin: 0;
+  }
+
+  /* The close is one cluster: tight gaps inside, air between sections. */
+  .close-sub {
+    font-size: 15.5px;
+    line-height: var(--leading);
+    color: color-mix(in srgb, var(--color-text) 78%, transparent);
+    margin: var(--half) 0 0;
+    max-width: var(--measure);
+  }
+
+  .close-action {
+    margin-top: var(--leading);
+  }
+</style>

@@ -1,0 +1,27 @@
+{
+  "experienceTitle": "Professional experience",
+  "experienceKicker": "Track record",
+  "visit": "Visit",
+  "items": {
+    "zigiBackend": {
+      "title": "Senior Backend Developer — Zigi App (Banco Industrial)",
+      "date": "February 2026 — Present",
+      "description": "I design and implement financial microservices with NestJS and TypeScript, applying Hexagonal Architecture, Domain-Driven Design and CQRS. I build event-driven architectures with AWS EventBridge, SQS and SNS, manage cloud-native infrastructure on AWS EKS (Kubernetes), and secure endpoints via AWS WAF, API Gateway and Lambda Authorizers. I author technical documentation (HLD, ADR) and cross-cutting libraries to accelerate Time-to-Market."
+    },
+    "zigiFrontend": {
+      "title": "Senior Frontend Developer — Zigi App (Banco Industrial)",
+      "date": "February 2024 — February 2026",
+      "description": "I led the technical development and UI architecture of a market-leading financial application using React Native and MobX. I designed security protocols within core flows that cut fraud-driven operational losses by 15%, and integrated SDKs such as MoEngage for personalized communications, lifting user retention by up to 30%. I took part in architecture committees and mentored the development team."
+    },
+    "ciancoders": {
+      "title": "Full Stack Developer — Ciancoder (GT) / Enapsys (MX)",
+      "date": "February 2021 — February 2024",
+      "description": "I led the modernization of the Procure-to-Pay process for corporate clients. I developed and deployed robust APIs with NestJS and GraphQL, cutting response latency for critical business processes, and implemented efficient storage architectures with SQL and Redis for high-volume data. I established quality standards through code reviews and technical mentorship for junior developers."
+    },
+    "freelance": {
+      "title": "Full Stack Developer — Freelance",
+      "date": "November 2020 — Present",
+      "description": "I manage the full software development life cycle for international clients using Next.js, Python/Django and Flutter. I automate deployments through CI/CD pipelines on AWS and Digital Ocean, and consult on secure infrastructure and resilient architectures to solve complex business challenges."
+    }
+  }
+}

@@ -1,0 +1,91 @@
+---
+import HtmlIcon from "../Icons/Logos/HtmlIcon.astro";
+import CssIcon from "../Icons/Logos/CssIcon.astro";
+import JsIcon from "../Icons/Logos/JsIcon.astro";
+import ReactIcon from "../Icons/Logos/ReactIcon.astro";
+import NestJsIcon from "../Icons/Logos/NestJsIcon.astro";
+import NextJs from "../Icons/Logos/NextJs.astro";
+import ReduxIcon from "../Icons/Logos/ReduxIcon.astro";
+import GraphQLIcon from "../Icons/Logos/GraphQLIcon.astro";
+import GitIcon from "../Icons/Logos/GitIcon.astro";
+import PostgresIcon from "../Icons/Logos/PostgresIcon.astro";
+import MySqlIcon from "../Icons/Logos/MySqlIcon.astro";
+import AswIcon from "../Icons/Logos/AswIcon.astro";
+// import BitriseIcon from "../Icons/Logos/BitriseIcon.astro";
+import DatadogIcon from "../Icons/Logos/DatadogIcon.astro";
+import PythonIcon from "../Icons/Logos/PythonIcon.astro";
+import DjangoIcon from "../Icons/Logos/DjangoIcon.astro";
+import TsIcon from "../Icons/Logos/TsIcon.astro";
+import AIIcon from "../Icons/Logos/AIIcon.astro";
+import PSIcon from "../Icons/Logos/PSIcon.astro";
+import FigmaIcon from "../Icons/Logos/FigmaIcon.astro";
+import AstroIcon from "../Icons/Logos/AstroIcon.astro";
+
+const dataIcons = [
+  TsIcon,
+  JsIcon,
+  ReactIcon,
+  NestJsIcon,
+  NextJs,
+  ReduxIcon,
+  GraphQLIcon,
+  GitIcon,
+  AstroIcon,
+  DatadogIcon,
+  PostgresIcon,
+  MySqlIcon,
+  AswIcon,
+  HtmlIcon,
+  CssIcon,
+  PythonIcon,
+  DjangoIcon,
+  AIIcon,
+  PSIcon,
+  FigmaIcon,
+];
+---
+
+{/* The stack reads as one quiet field of marks, left-aligned like the rest
+    of the page — no motion, no carousel chrome competing with the copy. */}
+<ul class="stack">
+  {
+    dataIcons.map((Icon) => (
+      <li class="stack-item">
+        <Icon class="stack-icon" />
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .stack {
+    list-style: none;
+    margin: var(--half) 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(56px, 1fr));
+    gap: var(--half);
+    max-width: 640px;
+  }
+
+  .stack-item {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 1;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-divider);
+    color: color-mix(in srgb, var(--color-text) 70%, transparent);
+    transition: color 150ms ease, border-color 150ms ease;
+  }
+
+  .stack-item:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+
+  .stack-item :global(.stack-icon) {
+    width: 26px;
+    height: 26px;
+    fill: currentColor;
+  }
+</style>

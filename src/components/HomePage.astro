@@ -1,0 +1,44 @@
+---
+/**
+ * The whole one-page portfolio, locale-agnostic.
+ *
+ * Every section resolves its copy from Astro.url, so both /
+ * and /en/ render this same tree and cannot drift apart.
+ */
+import Layout from "../layouts/Layout.astro";
+import Hero from "./sections/Hero.astro";
+import Metrics from "./sections/Metrics.astro";
+import Works from "./sections/Works.astro";
+import About from "./sections/About.astro";
+import Experience from "./sections/Experience.astro";
+import Contact from "./sections/Contact.astro";
+import { useI18Translations } from "../i18n/utils";
+
+const { t } = useI18Translations(Astro.url);
+---
+
+<Layout
+  title={t("common.title")}
+  description={t("common.description")}
+  keyWords={t("common.keywords")}
+>
+  <main class="wrap">
+    <Hero />
+    <Metrics />
+    <Works />
+    <About />
+    <Experience />
+    <Contact />
+  </main>
+</Layout>
+
+<style>
+  .wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--edge);
+  }
+</style>
+
+{/* One set-up for the whole page, so every section reveals alike. */}
+<script src="../scripts/reveal-sections.ts"></script>

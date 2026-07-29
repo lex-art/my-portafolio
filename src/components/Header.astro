@@ -7,21 +7,15 @@ import LanguagePicker from "./LanguagePicker.astro";
 const { t, lang } = useI18Translations(Astro.url);
 ---
 
-<header
-  class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto p-4 backdrop-blur"
->
-  <nav class="flex flex-row gap-x-8 flex-wrap justify-center">
-    <a class="scale hover:scale-125 transition" href="#about"
-      >{t("header.home")}</a
-    >
-    <a class="scale hover:scale-125 transition" href="#experience"
-      >{t("header.works")}</a
-    >
-    <a class="scale hover:scale-125 transition" href="#projects"
-      >{t("header.about")}</a
-    >
+<header class="masthead">
+  <nav class="nav">
+    <a class="nav-brand" href="#about">Alexander</a>
+    <a class="nav-link" href="#about">{t("header.home")}</a>
+    <a class="nav-link" href="#experience">{t("header.works")}</a>
+    <a class="nav-link" href="#profile">{t("header.about")}</a>
+    <a class="nav-link" href="#career">{t("header.projects")}</a>
     <a
-      class="scale hover:scale-125 transition"
+      class="btn btn-secondary nav-cv"
       href={`${import.meta.env.BASE_URL}pdf/oscar_chanax_cv_${lang}.pdf`}
       download>{t("header.downloadCV")}</a
     >
@@ -29,42 +23,99 @@ const { t, lang } = useI18Translations(Astro.url);
     <button
       id="theme-toggle"
       type="button"
-      class="text-gray-500 dark:text-gray-400 hover:scale-125 transition focus:outline-none rounded-lg p-x-2"
+      class="btn btn-icon btn-ghost theme-toggle"
     >
-      <Dark />
-      <Light />
+      <span class="sr-only">Theme</span>
+      <Dark class="theme-icon theme-icon-dark" />
+      <Light class="theme-icon theme-icon-light" />
     </button>
   </nav>
 </header>
-<script  is:inline>
-  function smoothScrollTo(target, duration = 1000) {
-    const startPosition = window.scrollY;
-    const targetElement = document.querySelector(target);
 
-    if (!targetElement) {
-      console.warn(`El selector ${target} no existe.`);
+<style>
+  .masthead {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: color-mix(in srgb, var(--color-bg) 72%, transparent);
+    backdrop-filter: blur(12px);
+  }
+
+  /* The masthead's contents take the page gutter and sit on the content
+     column's text axis. */
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 12px var(--edge);
+  }
+
+  .nav-brand {
+    font-family: var(--font-heading);
+    font-weight: var(--font-heading-weight);
+    font-size: 18px;
+    color: inherit;
+    text-decoration: none;
+    margin-right: auto;
+  }
+
+  .nav-link {
+    white-space: nowrap;
+  }
+
+  /* Which icon shows follows the theme class the Layout resolves before
+     first paint, so the toggle is correct without waiting on a script. */
+  .theme-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .theme-icon-light,
+  :global(html.dark) .theme-icon-dark {
+    display: none;
+  }
+
+  :global(html.dark) .theme-icon-light {
+    display: block;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* Phone width: the masthead keeps the brand and controls; the link row
+     folds away rather than wrapping into a second line. */
+  @media (max-width: 720px) {
+    .nav-link,
+    .nav-cv {
+      display: none;
+    }
+  }
+</style>
+
+<script is:inline>
+  function smoothScrollTo(target, duration = 450) {
+    const targetElement = document.querySelector(target);
+    if (!targetElement) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      targetElement.scrollIntoView();
       return;
     }
 
-    const targetPosition = targetElement.offsetTop;
-    const distance = targetPosition - startPosition;
+    const startPosition = window.scrollY;
+    const distance = targetElement.offsetTop - startPosition;
     let startTime = null;
-
-    function animation(currentTime) {
-      if (startTime === null) startTime = currentTime;
-      const elapsedTime = currentTime - startTime;
-      const ease = easeInOutQuad(
-        elapsedTime,
-        startPosition,
-        distance,
-        duration
-      );
-      window.scrollTo(0, ease);
-
-      if (elapsedTime < duration) {
-        requestAnimationFrame(animation);
-      }
-    }
 
     function easeInOutQuad(t, b, c, d) {
       t /= d / 2;
@@ -73,75 +124,42 @@ const { t, lang } = useI18Translations(Astro.url);
       return (-c / 2) * (t * (t - 2) - 1) + b;
     }
 
-    requestAnimationFrame(animation);
+    function step(currentTime) {
+      if (startTime === null) startTime = currentTime;
+      const elapsed = currentTime - startTime;
+      window.scrollTo(0, easeInOutQuad(elapsed, startPosition, distance, duration));
+      if (elapsed < duration) requestAnimationFrame(step);
+    }
+
+    requestAnimationFrame(step);
   }
 
-  function attachSmoothScroll(selector, duration = 1000) {
-    const elements = document.querySelectorAll(selector);
-
-    elements.forEach((element) => {
+  function attachSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach((element) => {
       element.addEventListener("click", (e) => {
         e.preventDefault();
         const target = element.getAttribute("href");
-        if (target) smoothScrollTo(target, duration);
+        if (target && target !== "#") smoothScrollTo(target);
       });
     });
   }
 
-  // Inicializar el comportamiento de scroll
-  attachSmoothScroll('a[href^="#"]', 450);
+  attachSmoothScroll();
+  document.addEventListener("astro:after-swap", attachSmoothScroll);
 </script>
+
 <script>
-  function applyTheme() {
-    const backgroundLight = document.getElementById("background-dark");
-    const themeToggleDarkIcon = document.getElementById(
-      "theme-toggle-dark-icon"
-    );
-    const themeToggleLightIcon = document.getElementById(
-      "theme-toggle-light-icon"
-    );
-
-    // Determina el tema inicial desde localStorage o preferencias del sistema
-    const isDarkMode =
-      localStorage.getItem("theme") === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches);
-
-    // Aplica el tema inicial
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark");
-      themeToggleLightIcon?.classList.remove("hidden");
-      themeToggleDarkIcon?.classList.add("hidden");
-      if (backgroundLight) backgroundLight.style.display = "block";
-    } else {
-      document.documentElement.classList.remove("dark");
-      themeToggleDarkIcon?.classList.remove("hidden");
-      themeToggleLightIcon?.classList.add("hidden");
-      if (backgroundLight) backgroundLight.style.display = "none";
-    }
-
-    // Configura el botón para alternar el tema
-    const themeToggleBtn = document.getElementById("theme-toggle");
-    themeToggleBtn?.addEventListener("click", function () {
-      const isDark = document.documentElement.classList.toggle("dark");
-
-      // Alterna visibilidad de los íconos
-      themeToggleDarkIcon?.classList.toggle("hidden", isDark);
-      themeToggleLightIcon?.classList.toggle("hidden", !isDark);
-
-      // Guarda el estado del tema en localStorage
-      localStorage.setItem("theme", isDark ? "dark" : "light");
-
-      // Actualiza el fondo si es necesario
-      if (backgroundLight) {
-        backgroundLight.style.display = isDark ? "block" : "none";
-      }
-    });
+  // The Layout resolves the theme before first paint and CSS picks the icon,
+  // so this only has to record the user's choice on click.
+  function bindThemeToggle() {
+    document
+      .getElementById("theme-toggle")
+      ?.addEventListener("click", function () {
+        const isDark = document.documentElement.classList.toggle("dark");
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+      });
   }
 
-  // Inicializa el tema al cargar la página
-  applyTheme();
-
-  // Reactualiza el tema al cambiar de página en Astro
-  document.addEventListener("astro:after-swap", applyTheme);
+  bindThemeToggle();
+  document.addEventListener("astro:after-swap", bindThemeToggle);
 </script>

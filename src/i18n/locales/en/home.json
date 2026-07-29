@@ -1,3 +1,49 @@
 {
-  "title": "I like to bring ideas to life through code and design. I transform ideas into digital reality and I love doing it."
+  "title": "I like to bring ideas to life through code and design. I transform ideas into digital reality and I love doing it.",
+  "hero": {
+    "greeting": "Aloha, I'm Alexander",
+    "line1": "I build software that",
+    "line2": "carries real businesses.",
+    "sub": "Senior Backend Developer in fintech. Microservices, event-driven architectures and AI-driven process automation, on AWS.",
+    "ctaPrimary": "Do you have a project in mind?",
+    "ctaSecondary": "About me"
+  },
+  "metrics": {
+    "kicker": "By the numbers",
+    "experience": "Years of experience",
+    "projects": "Projects completed",
+    "contributions": "Contributions on GitHub",
+    "technologies": "Technologies mastered"
+  },
+  "works": {
+    "kicker": "Work",
+    "learnMore": "Learn more",
+    "together": {
+      "title": "Let's work together",
+      "body": "From the conception of the idea to the implementation, with scalable and maintainable applications, attractive and accessible design that fits your needs."
+    },
+    "success": {
+      "title": "Business success",
+      "body": "One of my greatest achievements was to automate the processes of a logistics company, implementing package tracking through different states and notifying customers efficiently."
+    },
+    "current": {
+      "title": "Currently working",
+      "body": "As a Senior Backend Developer at Zigi App (Banco Industrial), I build the financial microservices behind a 100% digital Guatemalan application: event-driven architectures, security on AWS, and code built to scale."
+    }
+  },
+  "about": {
+    "kicker": "About",
+    "title": "Alexander here",
+    "subtitle": "M.Sc. in Information Security (Cum Laude) · Systems Engineer · AWS Certified Cloud Practitioner",
+    "p1": "My name is Oscar Alexander, originally from Guatemala, with over 6 years of experience in software development. I am currently a Senior Backend Developer at Zigi App (Banco Industrial), building financial microservices with NestJS under Hexagonal Architecture, DDD and CQRS on AWS.",
+    "p2": "I started programming at university. This, combined with a background in graphic design, gave me a broader view of how design and programming can be combined to create innovative and functional digital products.",
+    "p3": "Feel free to reach out if you have an idea or project in mind, or to join a project where I can contribute my knowledge and skills.",
+    "stackKicker": "Stack"
+  },
+  "contact": {
+    "kicker": "Contact",
+    "title": "Shall we build something together?",
+    "sub": "Write to me and let's talk about your project, your team, or the architecture you have in mind.",
+    "action": "Send an email"
+  }
 }

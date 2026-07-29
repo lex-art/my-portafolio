@@ -1,0 +1,81 @@
+---
+import { useI18Translations } from "../../i18n/utils";
+import { metrics } from "../../data/site";
+
+const { t } = useI18Translations(Astro.url);
+---
+
+{/* Full-bleed band on the section ground — it reads as a band of the page,
+    not a card in the column. */}
+<section class="stats" aria-label={t("home.metrics.kicker")}>
+  <div class="stats-wrap">
+    {
+      metrics.map((item) => (
+        <div>
+          <p class="stat-num tnum value-counter" data-value={item.value}>
+            +{item.value}
+          </p>
+          <p class="stat-label">{t(`home.metrics.${item.key}`)}</p>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .stats {
+    background:
+      radial-gradient(
+        900px 420px at 85% -40%,
+        color-mix(in srgb, var(--color-section-glow) 70%, transparent),
+        transparent 64%
+      ),
+      var(--color-section);
+    padding: calc(2.5 * var(--leading)) 0;
+    /* Break out of the centered content column to run edge to edge. */
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+  }
+
+  .stats-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--edge);
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    justify-content: space-between;
+    gap: calc(1.5 * var(--leading)) var(--leading);
+  }
+
+  .stat-num {
+    font-family: var(--font-heading);
+    font-weight: var(--font-heading-weight);
+    font-size: clamp(34px, 3.4vw, 50px);
+    line-height: calc(2 * var(--leading));
+    /* Paper text on the section ground; display figures stay proportional. */
+    color: var(--color-neutral-100);
+    margin: 0;
+    /* Digits lead the line. */
+    margin-left: -0.055em;
+  }
+
+  .stat-label {
+    font-size: 13px;
+    line-height: var(--half);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    /* Measured on the section ground: 7.4:1 flat, 5.9:1 at the glow's peak
+       composite — clears 4.5:1 at 13px either way. */
+    color: color-mix(in srgb, var(--color-neutral-100) 78%, transparent);
+    margin: var(--half) 0 0;
+  }
+
+  @media (max-width: 720px) {
+    .stats-wrap {
+      grid-template-columns: repeat(2, 1fr);
+      justify-content: start;
+    }
+  }
+</style>
+
+<script src="../../scripts/counter-animation.ts"></script>

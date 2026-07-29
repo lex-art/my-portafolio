@@ -10,12 +10,12 @@ const { t, navigate } = useI18Translations(Astro.url);
   <button
     transition:persist
     id="language-picker"
-    class="appearance-none border-none flex hover:scale-125 transition"
+    class="btn btn-icon btn-ghost"
   >
     <span class="sr-only">{t("header.chooseLanguage")}</span>
     <span
       id="spanish"
-      class="lng-toggle-text transition-all scale text-[#229379] dark:text-[#bcfffb] text-lg"
+      class="lng-toggle-text"
     >
       <!-- 🇬🇹 -->
       <Image
@@ -28,7 +28,7 @@ const { t, navigate } = useI18Translations(Astro.url);
     </span>
     <span
       id="english"
-      class="lng-toggle-text transition-all scale hidden text-[#229379] dark:text-[#bcfffb] text-lg"
+      class="lng-toggle-text hidden"
     >
       <!-- 🇺🇸 -->
       <!--     <UnitedStatesIcon /> -->
@@ -44,13 +44,13 @@ const { t, navigate } = useI18Translations(Astro.url);
   <div
     transition:persist="true"
     id="language-picker-menu"
-    class="hidden absolute scale-80 top-8 right-0 text-sm p-1 min-w-[8rem] rounded-md border border-gray-100 bg-white/90 dark:bg-gray-900/90 dark:border-gray-500/20 shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-md"
+    class="hidden lang-menu"
   >
     <ul>
       {
         Object.entries(languages).map(([lang, label]) => (
           <li
-            class="themes-menu-option px-2 py-1.5 cursor-pointer hover:bg-neutral-400/40 dark:hover:bg-gray-500/50 rounded-sm"
+            class="themes-menu-option"
             data-lang={lang}
           >
             <a class="block w-full h-full" href={navigate("/", lang)}>
@@ -63,15 +63,78 @@ const { t, navigate } = useI18Translations(Astro.url);
   </div>
 </div>
 
+<style>
+  .lang-menu {
+    position: absolute;
+    top: 42px;
+    right: 0;
+    z-index: 30;
+    min-width: 8rem;
+    padding: 4px;
+    font-size: 13px;
+    border: 1px solid var(--color-divider);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-md);
+  }
+
+  .lang-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .themes-menu-option {
+    padding: 6px 10px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+  }
+
+  .themes-menu-option:hover {
+    background: color-mix(in srgb, var(--color-text) 8%, transparent);
+    color: var(--color-accent);
+  }
+
+  .themes-menu-option a {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .lng-toggle-text {
+    display: flex;
+  }
+
+  .lng-toggle-text.hidden {
+    display: none;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
+
 <script is:inline>
   // Variables globales
   const menu = document.getElementById("language-picker-menu");
   const button = document.getElementById("language-picker");
   const spanish = document.getElementById("spanish");
   const english = document.getElementById("english");
-  let savedLang = localStorage.getItem("lang") || "es";
-  const lang = window.location.pathname.split("/")[1];
-  const currentLang = lang === "" ? "es" : lang;
+  // La URL manda: el idioma mostrado es el de la ruta, no el guardado.
+  // (Antes se redirigía la ruta para que coincidiera con localStorage, lo que
+  // hacía inalcanzable /en/ cuando había "es" guardado.)
+  const segment = window.location.pathname.split("/")[1];
+  const currentLang = segment === "en" ? "en" : "es";
+  let savedLang = currentLang;
+  localStorage.setItem("lang", currentLang);
 
   // Función para actualizar el idioma visual
   const updateLanguageDisplay = () => {
@@ -124,8 +187,4 @@ const { t, navigate } = useI18Translations(Astro.url);
       menu.classList.add("hidden");
     }
   });
-
-  if (currentLang !== savedLang) {
-     changeLanguage(savedLang); 
-  }
 </script>

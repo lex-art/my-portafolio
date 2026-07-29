@@ -4,20 +4,69 @@ export default {
 	darkMode: 'class',
 	theme: {
 		extend: {
-			backgroundImage: {
-				'custom-radial-light': 'radial-gradient(125% 125% at 50% 0%, transparent 30%, rgba(0, 255, 238, 0.5) 100%)',
-        'custom-radial-dark': 'radial-gradient(125% 125% at 50% 0%, transparent 40%, rgba(0, 255, 238, 0.18) 100%)',
-			},
 			fontFamily: {
-				'slackey': ['Slackey', 'sans-serif'],
-				'just-another-hand': ['Just Another Hand', 'cursive'],
+				sans: ['Inter Variable', 'Inter', 'system-ui', 'sans-serif'],
+				heading: ['Inter Variable', 'Inter', 'system-ui', 'sans-serif'],
 			},
+			// Nocturne tokens, resolved from the CSS custom properties in
+			// src/styles.css so light/dark swap without duplicate utilities.
 			colors: {
-        background: {
-          light: 'radial-gradient(125% 125% at 50% 10%, #00ffee80 40%, #6fdcbf 75%)',
-          dark: 'radial-gradient(125% 125% at 50% 10%, #000c1e 40%, #00ffee2e 80%)',
-        },
-      },
+				bg: 'var(--color-bg)',
+				surface: 'var(--color-surface)',
+				ink: 'var(--color-text)',
+				divider: 'var(--color-divider)',
+				accent: {
+					DEFAULT: 'var(--color-accent)',
+					2: 'var(--color-accent-2)',
+					100: 'var(--color-accent-100)',
+					200: 'var(--color-accent-200)',
+					300: 'var(--color-accent-300)',
+					400: 'var(--color-accent-400)',
+					500: 'var(--color-accent-500)',
+					600: 'var(--color-accent-600)',
+					700: 'var(--color-accent-700)',
+					800: 'var(--color-accent-800)',
+					900: 'var(--color-accent-900)',
+				},
+				neutral: {
+					100: 'var(--color-neutral-100)',
+					200: 'var(--color-neutral-200)',
+					300: 'var(--color-neutral-300)',
+					400: 'var(--color-neutral-400)',
+					500: 'var(--color-neutral-500)',
+					600: 'var(--color-neutral-600)',
+					700: 'var(--color-neutral-700)',
+					800: 'var(--color-neutral-800)',
+					900: 'var(--color-neutral-900)',
+				},
+				section: {
+					DEFAULT: 'var(--color-section)',
+					glow: 'var(--color-section-glow)',
+				},
+			},
+			borderRadius: {
+				sm: 'var(--radius-sm)',
+				md: 'var(--radius-md)',
+				lg: 'var(--radius-lg)',
+			},
+			boxShadow: {
+				sm: 'var(--shadow-sm)',
+				md: 'var(--shadow-md)',
+				lg: 'var(--shadow-lg)',
+			},
+			// The 28px leading unit and its half-step, as spacing and leading.
+			spacing: {
+				unit: 'var(--leading)',
+				half: 'var(--half)',
+				edge: 'var(--edge)',
+			},
+			lineHeight: {
+				unit: 'var(--leading)',
+				half: 'var(--half)',
+			},
+			maxWidth: {
+				measure: 'var(--measure)',
+			},
 		},
 	},
 	plugins: [],

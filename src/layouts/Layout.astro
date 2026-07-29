@@ -1,10 +1,5 @@
 ---
-// Supports weights 100-900
-import "@fontsource-variable/dm-sans";
-import "@fontsource-variable/dm-sans/opsz.css";
-import "@fontsource-variable/dm-sans/opsz-italic.css";
-import "@fontsource/slackey";
-import "@fontsource/just-another-hand";
+import "@fontsource-variable/inter";
 import "../styles.css";
 
 import Header from "../components/Header.astro";
@@ -41,7 +36,7 @@ const lang = getLangFromUrl(Astro.url);
     <meta property="og:type" content="website" />
     <meta
       property="og:title"
-      content="Oscar Chanax | Senior Software Engineer | Tech Lead"
+      content="Oscar Chanax | Senior Software Engineer | Tech Lead | Architect"
     />
     <meta
       property="og:description"
@@ -71,50 +66,30 @@ const lang = getLangFromUrl(Astro.url);
 
     <!-- Meta Tags Generated via https://www.opengraph.xyz -->
     <ClientRouter />
+    <script is:inline>
+      // Resolve the theme before first paint, so the ground never flashes.
+      (() => {
+        const stored = localStorage.getItem("theme");
+        const isDark =
+          stored === "dark" ||
+          (stored === null &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches);
+        document.documentElement.classList.toggle("dark", isDark);
+      })();
+    </script>
   </head>
-  <body
-    class="relative text-[#229379] dark:text-[#bcfffb] h-full w-full bg-slate-100 dark:bg-slate-900 block"
-  >
-    <div
-      id="background-light"
-      class="absolute -z-50 bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]"
-    >
-    </div>
-    <div
-      id="background-dark"
-      class="fixed top-0 z-[-2] h-dvh w-dvw bg-slate-900 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
-    >
-      <div class="fixed top-0 left-0 w-full h-screen m-0 p-0 -z-10">
-        <div id="stars"></div>
-      </div>
-    </div>
+  <body>
     <Header />
     <slot />
     <Footer />
   </body>
 </html>
+
 <style is:global>
-  :root {
-    color-scheme: light dark;
-  }
-  html {
-    font-family: "DM Sans Variable", system-ui, sans-serif;
-    font-weight: 300;
-    font-style: normal;
-    scroll-behavior: smooth;
-  }
   body {
-    display: flex;
-    justify-content: center;
-    height: 100%;
     min-height: 100dvh;
+    margin: 0;
     overflow-x: hidden;
     overscroll-behavior: none;
-    color: #e1ffff;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
   }
 </style>

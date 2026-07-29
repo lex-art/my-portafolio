@@ -1,33 +1,45 @@
 ---
+import { useI18Translations } from "../i18n/utils";
+import { social } from "../data/site";
+
+const { t } = useI18Translations(Astro.url);
 const currentYear = new Date().getFullYear();
 ---
 
-<footer
-  class="opacity-80 m-4 min-[375px]:pl-4 md:pl-0 mt-0 w-full mx-auto container lg:max-w-4xl md:max-w-2xl mb-0 flex justify-center"
->
-  <div
-    class="rounded-lg w-full max-w-screen-xl mx-auto md:flex md:items-center md:justify-between py-4 text-center"
-  >
-    <span class="text-sm sm:text-center text-zinc-800/90 dark:text-zinc-200/90"
-      >© {currentYear}
-      <a href="https://alexande-dev.com/" class="hover:underline">lex-art</a>.
+<footer class="footer">
+  <div class="footer-inner">
+    <span>
+      © {currentYear}
+      <a class="nav-link" href="https://alexander-dev.com/">lex-art</a>
     </span>
-
-    <ul
-      class="flex justify-center items-center mt-3 text-sm font-medium dark:text-white/80 sm:mt-0"
-    >
-      <li>
-        <a href="/#about" class="text-center hover:underline me-4 md:me-6"
-          >Sobre mí</a
-        >
-      </li>
-      <li>
-        <a
-          id="contacto"
-          href="mailto:ochanaxo@gmail.com"
-          class="hover:underline">Contacto</a
-        >
-      </li>
-    </ul>
+    <nav class="footer-links">
+      <a class="nav-link" href="#profile">{t("header.about")}</a>
+      <a class="nav-link" href={social.email}>{t("header.contact")}</a>
+    </nav>
   </div>
 </footer>
+
+<style>
+  .footer {
+    padding: calc(2 * var(--leading)) 0;
+    font-size: 13px;
+    line-height: var(--leading);
+    color: color-mix(in srgb, var(--color-text) 55%, transparent);
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--edge);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--half);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: var(--leading);
+  }
+</style>

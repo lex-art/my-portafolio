@@ -1,0 +1,149 @@
+---
+import { Image } from "astro:assets";
+import { useI18Translations } from "../../i18n/utils";
+import { works } from "../../data/site";
+
+const { t } = useI18Translations(Astro.url);
+---
+
+<section class="works" id="experience">
+  <span class="kicker">{t("home.works.kicker")}</span>
+  {
+    works.map((item, index) => (
+      <article class="feature" id={`works-together-${index}`}>
+        <p class="f-num tnum">{String(index + 1).padStart(2, "0")}</p>
+        <div class="f-copy">
+          <h2 class="f-title">{t(`home.works.${item.key}.title`)}</h2>
+          <p class="f-body">{t(`home.works.${item.key}.body`)}</p>
+          {item.link && (
+            <a
+              class="btn btn-secondary f-link"
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t("home.works.learnMore")}
+              <svg
+                class="size-3"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 10"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M1 5h12m0 0L9 1m4 4L9 9"
+                />
+              </svg>
+            </a>
+          )}
+        </div>
+        <figure class="f-figure lighten" id={`image-works-${index}`}>
+          <Image
+            class="f-image"
+            src={item.image}
+            alt={t(`home.works.${item.key}.title`)}
+            width={480}
+            height={320}
+            loading="lazy"
+          />
+        </figure>
+      </article>
+    ))
+  }
+</section>
+
+<style>
+  .works {
+    padding: calc(3.5 * var(--leading)) 0 calc(2.5 * var(--leading));
+  }
+
+  /* Numbered, rule-parted, asymmetric: no equal cards. The number, title and
+     first copy line share one baseline across the row. */
+  .feature {
+    display: grid;
+    grid-template-columns: minmax(48px, 96px) minmax(0, 420px) minmax(0, 1fr);
+    gap: var(--leading) clamp(24px, 4vw, 72px);
+    align-items: start;
+    padding: calc(1.5 * var(--leading)) 0;
+    position: relative;
+  }
+
+  /* In-content structural rules take a step above the divider token, so the
+     row structure holds beside the 24px titles. */
+  .feature + .feature::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--color-rule-strong) 48px calc(100% - 48px),
+      transparent
+    );
+  }
+
+  .f-num {
+    font-family: var(--font-heading);
+    font-weight: var(--font-heading-weight);
+    font-size: 15px;
+    line-height: var(--leading);
+    color: var(--color-accent);
+    margin: 0;
+  }
+
+  .f-title {
+    font-size: 24px;
+    line-height: var(--leading);
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+
+  .f-body {
+    font-size: 15.5px;
+    line-height: var(--leading);
+    margin: var(--half) 0 0;
+    color: color-mix(in srgb, var(--color-text) 78%, transparent);
+    max-width: 52ch;
+  }
+
+  .f-link {
+    margin-top: var(--half);
+  }
+
+  .f-figure {
+    margin: 0;
+    /* Cap the frame so a short copy column does not leave the row mostly
+       empty beside a full-width image. */
+    max-width: 380px;
+    justify-self: end;
+  }
+
+  /* The source images vary between portrait and landscape; the frame pins
+     the ratio so a row's height never depends on which asset it holds. */
+  .f-image {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+  }
+
+  /* The fixed-max columns crush the copy column in the tablet band, so the
+     row collapses earlier than the page does. */
+  @media (max-width: 880px) {
+    .feature {
+      grid-template-columns: 1fr;
+      gap: var(--half);
+    }
+    .f-body {
+      max-width: var(--measure);
+    }
+  }
+</style>
+

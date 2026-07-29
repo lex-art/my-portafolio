@@ -1,3 +1,49 @@
 {
-  "title": "Me gusta darle vida a las ideas a través del código y el diseño. Transformo ideas en realidad digital y me encanta hacerlo."
+  "title": "Me gusta darle vida a las ideas a través del código y el diseño. Transformo ideas en realidad digital y me encanta hacerlo.",
+  "hero": {
+    "greeting": "Aloha, soy Alexander",
+    "line1": "Construyo software que",
+    "line2": "sostiene negocios reales.",
+    "sub": "Senior Backend Developer en fintech. Microservicios, arquitecturas orientadas a eventos y automatización de procesos con IA, sobre AWS.",
+    "ctaPrimary": "¿Tienes un proyecto en mente?",
+    "ctaSecondary": "Conóceme"
+  },
+  "metrics": {
+    "kicker": "En números",
+    "experience": "Años de experiencia",
+    "projects": "Proyectos completados",
+    "contributions": "Contribuciones en GitHub",
+    "technologies": "Tecnologías dominadas"
+  },
+  "works": {
+    "kicker": "Trabajo",
+    "learnMore": "Saber más",
+    "together": {
+      "title": "Trabajemos juntos",
+      "body": "Desde la concepción de la idea hasta la implementación, con aplicaciones escalables y mantenibles, diseño atractivo y accesible que se ajusta a tus necesidades."
+    },
+    "success": {
+      "title": "Casos de éxito",
+      "body": "Uno de mis mayores logros fue automatizar los procesos de una empresa de logística, implementando el rastreo de paquetes a través de diferentes estados y notificando a los clientes de manera eficiente."
+    },
+    "current": {
+      "title": "Actualmente trabajando",
+      "body": "Como Senior Backend Developer en Zigi App (Banco Industrial), construyo los microservicios financieros que sostienen una aplicación 100% digital guatemalteca: arquitecturas orientadas a eventos, seguridad sobre AWS y código preparado para escalar."
+    }
+  },
+  "about": {
+    "kicker": "Sobre mí",
+    "title": "Alexander aquí",
+    "subtitle": "Maestría en Seguridad Informática (Cum Laude) · Ingeniero en Sistemas · AWS Certified Cloud Practitioner",
+    "p1": "Me llamo Oscar Alexander, originario de Guatemala, con más de 6 años de experiencia en desarrollo de software. Actualmente soy Senior Backend Developer en Zigi App (Banco Industrial), donde construyo microservicios financieros con NestJS bajo Arquitectura Hexagonal, DDD y CQRS sobre AWS.",
+    "p2": "Empecé en la programación desde la universidad. Esto, combinado con conocimientos en diseño gráfico, me permitió tener una visión más amplia de cómo se puede combinar el diseño con la programación para crear productos digitales innovadores y funcionales.",
+    "p3": "No dudes en contactarme si tienes alguna idea o proyecto en mente, o para participar en un proyecto donde pueda aportar mis conocimientos y habilidades.",
+    "stackKicker": "Stack"
+  },
+  "contact": {
+    "kicker": "Contacto",
+    "title": "¿Construimos algo juntos?",
+    "sub": "Escríbeme y conversemos sobre tu proyecto, tu equipo o la arquitectura que tienes en mente.",
+    "action": "Enviar correo"
+  }
 }
