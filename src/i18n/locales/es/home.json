@@ -18,13 +18,23 @@
   "works": {
     "kicker": "Trabajo",
     "learnMore": "Saber más",
-    "together": {
-      "title": "Trabajemos juntos",
-      "body": "Desde la concepción de la idea hasta la implementación, con aplicaciones escalables y mantenibles, diseño atractivo y accesible que se ajusta a tus necesidades."
+    "processLabel": "Proceso",
+    "tikalbox": {
+      "title": "TikalBox",
+      "body": "Plataforma de casilleros y logística para envío internacional, en producción desde 2023 con más de 11k guías gestionadas y más de 300 casilleros activos. Sustituye el seguimiento manual por trazabilidad automática con historial por guía, avisando al cliente por correo y WhatsApp en los hitos clave. Incluye un programa de puntos por niveles que premia la recompra.",
+      "tech": "NestJS 11 y TypeORM sobre MySQL, con flujos de autenticación separados para personal de agencia y titulares de casillero. Cobros con Stripe, registro manual y aprobación de comprobantes de transferencia, generación de etiquetas con código de barras y reportes en Excel. Integración con WhatsApp Business Cloud API, observabilidad con Grafana y Loki, infraestructura con Terraform y despliegue por GitHub Actions."
     },
-    "success": {
-      "title": "Casos de éxito",
-      "body": "Uno de mis mayores logros fue automatizar los procesos de una empresa de logística, implementando el rastreo de paquetes a través de diferentes estados y notificando a los clientes de manera eficiente."
+    "pos": {
+      "title": "POS System",
+      "body": "Punto de venta en modelo SaaS para comercios con varias sucursales. Centraliza inventario, caja y facturación en un solo lugar, con stock y movimientos por sucursal, control de apertura y cierre de caja, y comprobantes con numeración correlativa y diseño personalizable por negocio.",
+      "tech": "Next.js 16 con App Router, ShadCN y Tailwind 4 al frente; NestJS 11 con CQRS y arquitectura hexagonal detrás, sobre PostgreSQL. Autenticación con Better Auth mediante OTP por correo, magic links y organizaciones, con roles y permisos aplicados en cliente y servidor. Suscripciones cobradas con el gateway Recurrente sobre webhooks firmados, y precisión monetaria con decimal.js.",
+      "process": "Desarrollado con asistencia de IA bajo ingeniería de contexto: convenciones, modelo de dominio y arquitectura documentados como contexto versionado, con agentes especializados por capa y una regla que exige pruebas por cada tarea."
+    },
+    "lyosell": {
+      "title": "Lyosell",
+      "body": "Plataforma que permite a un comercio abrir su tienda en línea sin equipo técnico: se registra, verifica su correo, elige su marca y empieza a vender. El cobro va directo a la cuenta del comerciante, sin comisión por venta. Un principio guía el producto: el comprador nunca ve una tienda rota, así que si el dueño se atrasa en el pago se limita su panel de administración, nunca la tienda.",
+      "tech": "SaaS multi-tenant sobre Vendure, una tienda por canal, con resolución de tenant por dominio en el servidor y pruebas de aislamiento que verifican que un canal no pueda filtrarse a otro. Storefront en Next.js 16, dominio propio por tienda con emisión de certificados bajo demanda vía Caddy, pagos con Recurrente usando las credenciales de cada comercio, y correos enviados con la marca de cada tienda.",
+      "process": "Construido con asistencia de IA sobre un documento de contexto que fija decisiones de arquitectura y reglas de aislamiento, con una norma clara para las pruebas: cada test de aislamiento se valida rompiendo el código a propósito, porque uno que nunca se vio fallar no prueba nada."
     },
     "current": {
       "title": "Actualmente trabajando",

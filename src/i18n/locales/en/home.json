@@ -18,13 +18,23 @@
   "works": {
     "kicker": "Work",
     "learnMore": "Learn more",
-    "together": {
-      "title": "Let's work together",
-      "body": "From the conception of the idea to the implementation, with scalable and maintainable applications, attractive and accessible design that fits your needs."
+    "processLabel": "Process",
+    "tikalbox": {
+      "title": "TikalBox",
+      "body": "A locker and logistics platform for international shipping, in production since 2023 with over 11k waybills handled and more than 300 active lockers. It replaces manual tracking with automatic traceability and a per-waybill history, notifying customers by email and WhatsApp at the key milestones. It also runs a tiered loyalty points program that rewards repeat business.",
+      "tech": "NestJS 11 and TypeORM on MySQL, with separate authentication flows for agency staff and locker holders. Payments through Stripe, manual entry and an approval workflow for bank transfer receipts, plus barcode label generation and Excel reporting. WhatsApp Business Cloud API integration, observability with Grafana and Loki, infrastructure in Terraform and deployment through GitHub Actions."
     },
-    "success": {
-      "title": "Business success",
-      "body": "One of my greatest achievements was to automate the processes of a logistics company, implementing package tracking through different states and notifying customers efficiently."
+    "pos": {
+      "title": "POS System",
+      "body": "A SaaS point of sale for retailers running several branches. It brings inventory, cash handling and invoicing into one place, with per-branch stock and movements, cash register open and close control, and receipts with sequential numbering and per-business branding.",
+      "tech": "Next.js 16 with the App Router, ShadCN and Tailwind 4 on the front; NestJS 11 with CQRS and hexagonal architecture behind it, on PostgreSQL. Better Auth with email OTP, magic links and organizations, with roles and permissions enforced on both client and server. Subscriptions billed through the Recurrente gateway over signed webhooks, and monetary precision with decimal.js.",
+      "process": "Built with AI assistance under context engineering: conventions, domain model and architecture kept as versioned context, with per-layer specialist agents and a rule requiring tests for every task."
+    },
+    "lyosell": {
+      "title": "Lyosell",
+      "body": "A platform that lets a merchant open an online store with no technical team: sign up, verify the email, pick a brand, start selling. Payments go straight to the merchant's account, with no commission per sale. One principle drives the product: a shopper never sees a broken store, so if the owner falls behind on payment it is their admin panel that gets restricted, never the storefront.",
+      "tech": "A multi-tenant SaaS on Vendure, one store per channel, with tenant resolution by domain on the server and isolation tests that verify one channel cannot leak into another. Storefront on Next.js 16, custom domain per store with on-demand certificate issuance through Caddy, payments through Recurrente under each merchant's own credentials, and email sent under each store's own brand.",
+      "process": "Built with AI assistance on top of a context document that pins architecture decisions and isolation rules, under one clear testing standard: every isolation test is validated by deliberately breaking the code, because a test never seen failing proves nothing."
     },
     "current": {
       "title": "Currently working",

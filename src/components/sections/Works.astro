@@ -10,11 +10,29 @@ const { t } = useI18Translations(Astro.url);
   <span class="kicker">{t("home.works.kicker")}</span>
   {
     works.map((item, index) => (
-      <article class="feature" id={`works-together-${index}`}>
+      <article class="feature" id={`works-item-${index}`}>
         <p class="f-num tnum">{String(index + 1).padStart(2, "0")}</p>
         <div class="f-copy">
           <h2 class="f-title">{t(`home.works.${item.key}.title`)}</h2>
           <p class="f-body">{t(`home.works.${item.key}.body`)}</p>
+          {item.variant === "project" && (
+            <Fragment>
+              <p class="f-tech">{t(`home.works.${item.key}.tech`)}</p>
+              {item.hasProcess === true && (
+                <p class="f-process">
+                  <span class="f-process-label">
+                    {t("home.works.processLabel")}
+                  </span>
+                  {t(`home.works.${item.key}.process`)}
+                </p>
+              )}
+              <ul class="f-tags">
+                {item.tags.map((tag) => (
+                  <li class="tag tag-outline">{tag}</li>
+                ))}
+              </ul>
+            </Fragment>
+          )}
           {item.link && (
             <a
               class="btn btn-secondary f-link"
@@ -113,6 +131,48 @@ const { t } = useI18Translations(Astro.url);
     max-width: 52ch;
   }
 
+  /* The technical read sits a step below the business one, so a scanning
+     reader takes the problem before the stack. */
+  .f-tech {
+    font-size: 14.5px;
+    line-height: var(--leading);
+    margin: var(--half) 0 0;
+    color: color-mix(in srgb, var(--color-text) 58%, transparent);
+    max-width: 52ch;
+  }
+
+  /* Set apart from the two prose paragraphs by a rule rather than another
+     block of text: this is a note about how the work was done, not about
+     what it is. */
+  .f-process {
+    font-size: 14px;
+    line-height: var(--leading);
+    margin: var(--leading) 0 0;
+    padding-left: var(--half);
+    border-left: 2px solid var(--color-accent);
+    color: color-mix(in srgb, var(--color-text) 58%, transparent);
+    max-width: 52ch;
+  }
+
+  .f-process-label {
+    display: block;
+    font-family: var(--font-heading);
+    font-weight: var(--font-heading-weight);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .f-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: var(--half) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
   .f-link {
     margin-top: var(--half);
   }
@@ -141,7 +201,9 @@ const { t } = useI18Translations(Astro.url);
       grid-template-columns: 1fr;
       gap: var(--half);
     }
-    .f-body {
+    .f-body,
+    .f-tech,
+    .f-process {
       max-width: var(--measure);
     }
   }
